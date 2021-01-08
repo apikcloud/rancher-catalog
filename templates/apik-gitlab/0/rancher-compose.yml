@@ -6,46 +6,12 @@ catalog:
     minimum_rancher_version: v1.3.2
 
     questions:
-        -   variable: GITLAB_HOSTNAME
+        -   variable: strTraefikDomains
             label: "Domaine Gitlab"
             required: true
             type: "string"
             default: "gitlab.apik.cloud"
-        -   variable: REGISTRY_HOSTNAME
-            label: "Registry domaine"
-            required: true
-            type: "string"
-            default: "registry.gitlab.apik.cloud"
-        -   variable: REGISTRY_PORT
-            label: "Registry port"
-            required: true
-            type: "int"
-            default: "5050"
-        -   variable: TIMEZONE
-            label: "Timezone"
-            required: true
-            type: "string"
-            default: "UTC"
-        -   variable: SMTP_ADDRESS
-            label: "Adresse SMTP"
-            required: true
-            type: "string"
-        -   variable: SMTP_PORT
-            label: "Port SMTP"
-            required: true
-            type: "string"
-        -   variable: SMTP_USERNAME
-            label: "Utilisateur SMTP"
-            required: true
-            type: "string"    
-        -   variable: SMTP_PASSWORD
-            label: "Mot de passe SMTP"
-            required: true
-            type: "password"      
-        -   variable: SMTP_DOMAIN
-            label: "Domaine SMTP"
-            required: true
-            type: "string"     
+             
             
             
             
