@@ -90,7 +90,7 @@ services:
       - config:/etc/gitlab
       - logs:/var/log/gitlab
       - data:/var/opt/gitlab
-      - ./../traefik/ssl:/etc/gitlab/ssl/:ro
+      
 
 
 networks:
