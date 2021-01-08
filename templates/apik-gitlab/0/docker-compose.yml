@@ -99,5 +99,11 @@ networks:
 
 volumes:
   config:
+    driver: rancher-nfs
+    external: true
   logs:
+    driver: rancher-nfs
+    external: true
   data:
+    driver: rancher-nfs
+    external: true
