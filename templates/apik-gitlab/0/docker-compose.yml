@@ -39,10 +39,6 @@ services:
       - "traefik.http.routers.registry.tls=true"
       - "traefik.http.services.registry.loadbalancer.server.port=${REGISTRY_PORT}"
 
-    # I had problems with the health check. Sometimes it reported unhealthyness and therefore Traefik removed
-    # the container, so I turned it off. Maybe it works by now.
-    healthcheck:
-      disable: true
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'https://${GITLAB_HOSTNAME}'
