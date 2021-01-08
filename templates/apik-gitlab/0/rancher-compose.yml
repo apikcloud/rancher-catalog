@@ -26,3 +26,26 @@ catalog:
             required: true
             type: "string"
             default: "UTC"
+        -   variable: SMTP_ADDRESS
+            label: "Adresse SMTP"
+            required: true
+            type: "string"
+        -   variable: SMTP_PORT
+            label: "Port SMTP"
+            required: true
+            type: "string"
+        -   variable: SMTP_USERNAME
+            label: "Utilisateur SMTP"
+            required: true
+            type: "string"    
+        -   variable: SMTP_PASSWORD
+            label: "Mot de passe SMTP"
+            required: true
+            type: "password"      
+        -   variable: SMTP_DOMAIN
+            label: "Domaine SMTP"
+            required: true
+            type: "string"     
+            
+            
+            
