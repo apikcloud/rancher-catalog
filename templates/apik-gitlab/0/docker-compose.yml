@@ -44,22 +44,6 @@ services:
       - "traefik.http.routers.registry.tls=true"
       - "traefik.http.services.registry.loadbalancer.server.port=${REGISTRY_PORT}"
 
-      - "traefik.http.routers.mattermost.rule=Host(`${MATTERMOST_HOSTNAME}`)"
-      - "traefik.http.routers.mattermost.entrypoints=http"
-      - "traefik.http.routers.mattermost.service=mattermost"
-      - "traefik.http.middlewares.mattermost-redirectscheme.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.mattermost-redirectscheme.redirectscheme.permanent=false"
-      - "traefik.http.routers.mattermost.middlewares=mattermost-redirectscheme"
-
-      - "traefik.http.routers.mattermost-secure.rule=Host(`${MATTERMOST_HOSTNAME}`)"
-      - "traefik.http.routers.mattermost-secure.entrypoints=https"
-      - "traefik.http.routers.mattermost-secure.service=mattermost"
-      - "traefik.http.routers.mattermost-secure.tls=true"
-
-      - "traefik.http.services.mattermost.loadbalancer.server.port=${MATTERMOST_PORT}"
-      - "traefik.http.services.mattermost.loadbalancer.server.scheme=http"
-      - "traefik.http.services.mattermost.loadbalancer.server.port=80"
-      - "traefik.http.services.mattermost.loadbalancer.passhostheader=true"
     # I had problems with the health check. Sometimes it reported unhealthyness and therefore Traefik removed
     # the container, so I turned it off. Maybe it works by now.
     healthcheck:
