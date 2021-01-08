@@ -19,7 +19,7 @@ catalog:
         -   variable: REGISTRY_PORT
             label: "Registry port"
             required: true
-            type: "integer"
+            type: "int"
             default: "5050"
         -   variable: TIMEZONE
             label: "Timezone"
