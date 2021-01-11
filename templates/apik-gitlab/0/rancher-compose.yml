@@ -11,7 +11,29 @@ catalog:
             required: true
             type: "string"
             default: "gitlab.apik.cloud"
-             
-            
+        -   variable: serveur_smtp
+            label: "Serveur SMTP"
+            required: true
+            type: "string"
+            default: "smtp.office365.com"
+        -   variable: port_smtp
+            label: "Port SMTP"
+            required: true
+            type: "string"
+            default: "587"
+        -   variable: username_smtp
+            label: "Username SMTP"
+            required: true
+            type: "string"    
+        -   variable: password_smtp
+            label: "Mot de passe office"
+            required: true
+            type: "password"
+        -   variable: domain_smtp
+            label: "Domaine SMTP"
+            required: true
+            type: "string"
+            default: "apik.cloud"         
+        
             
             
