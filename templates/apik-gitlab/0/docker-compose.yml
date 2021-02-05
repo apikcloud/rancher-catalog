@@ -1,10 +1,13 @@
 version: '2'
 volumes:
   gitlab-app-data:
+    external: true
     driver: rancher-nfs
   gitlab-conf-files:
+    external: true
     driver: rancher-nfs
   gitlab-log-data:
+    external: true
     driver: rancher-nfs
 services:
   gitlab-server:
