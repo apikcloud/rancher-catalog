@@ -34,7 +34,7 @@ catalog:
             required: true
             type: "string"
             default: "apik.cloud"         
-        - variable: host_label
+        -   variable: host_label
             label: "Host with Label to put gitlab on"
             description: |
               Host label to use as postgres 'value' tag.
