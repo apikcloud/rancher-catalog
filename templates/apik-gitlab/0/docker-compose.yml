@@ -40,3 +40,4 @@ services:
       traefik.backend.loadbalancer.method: drr
       traefik.backend.buffering.retryExpression: IsNetworkError() && Attempts() < 5
       traefik.frontend.rule: Host:$strTraefikDomains
+      io.rancher.scheduler.affinity:host_label: ${host_label}
