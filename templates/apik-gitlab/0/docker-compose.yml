@@ -18,15 +18,15 @@ services:
         registry_external_url 'http://registry.apik.cloud'
         gitlab_rails['gitlab_shell_ssh_port'] = 2222
         gitlab_rails['smtp_enable'] = true
-        gitlab_rails['smtp_address'] =  $serveur_smtp
-        gitlab_rails['smtp_port'] = $port_smtp
-        gitlab_rails['smtp_user_name'] = $username_smtp
-        gitlab_rails['smtp_password'] = $password_smtp
-        gitlab_rails['smtp_domain'] = $domain_smtp
+        gitlab_rails['smtp_address'] =  '$serveur_smtp'
+        gitlab_rails['smtp_port'] = '$port_smtp'
+        gitlab_rails['smtp_user_name'] = '$username_smtp'
+        gitlab_rails['smtp_password'] = '$password_smtp'
+        gitlab_rails['smtp_domain'] = '$domain_smtp'
         gitlab_rails['smtp_authentication'] = "login"
         gitlab_rails['smtp_enable_starttls_auto'] = true
         gitlab_rails['smtp_tls'] = false
-        gitlab_rails['gitlab_email_from'] = $username_smtp
+        gitlab_rails['gitlab_email_from'] = '$username_smtp'
     volumes:
     - gitlab-app-data:/var/opt/gitlab
     - gitlab-log-data:/var/log/gitlab
