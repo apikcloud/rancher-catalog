@@ -1,0 +1,45 @@
+version: '2'
+catalog:
+    name: "Gitlab"
+    version: "2.0"
+    description: "Gitlab by Apik"
+    minimum_rancher_version: v1.3.2
+
+    questions:
+        -   variable: strTraefikDomains
+            label: "Domaine Gitlab"
+            required: true
+            type: "string"
+            default: "gitlab.apik.cloud"
+        -   variable: serveur_smtp
+            label: "Serveur SMTP"
+            required: true
+            type: "string"
+            default: "smtp.office365.com"
+        -   variable: port_smtp
+            label: "Port SMTP"
+            required: true
+            type: "string"
+            default: "587"
+        -   variable: username_smtp
+            label: "Username SMTP"
+            required: true
+            type: "string"    
+        -   variable: password_smtp
+            label: "Mot de passe office"
+            required: true
+            type: "password"
+        -   variable: domain_smtp
+            label: "Domaine SMTP"
+            required: true
+            type: "string"
+            default: "apik.cloud"         
+        -   variable: host_label
+            label: "Host with Label to put gitlab on"
+            description: |
+              Host label to use as postgres 'value' tag.
+              Example: 'postgres=true'
+            required: true
+            type: "string"
+            
+            
