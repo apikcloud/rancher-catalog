@@ -11,7 +11,7 @@ volumes:
     driver: rancher-nfs
 services:
   gitlab-server:
-    image: gitlab/gitlab-ce:9.5.10-ce.0
+    image: gitlab/gitlab-ce
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'http://gitlab.apik.cloud'
