@@ -1,0 +1,12 @@
+version: '2'
+services:
+  cleanup:
+    privileged: true
+    image: nikitux/dindsystemprune:v1.0
+    environment:
+      CRON_STRINGS: 0 6 * * * /usr/local/bin/docker system prune -f -a >> /var/log/cron/cron.log 2>&1
+      CRON_TAIL: 'true'
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      io.rancher.scheduler.global: 'true'
