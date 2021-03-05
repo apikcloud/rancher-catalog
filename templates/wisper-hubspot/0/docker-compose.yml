@@ -1,0 +1,12 @@
+version: '2'
+volumes:
+  wisper_root:
+    external : true
+    driver: rancher-nfs
+services:
+  wisper:
+    image: apik/wisper
+    labels:
+      io.rancher.scheduler.affinity:host_label: prod=true
+    volumes:
+      - wisper_root:/root
