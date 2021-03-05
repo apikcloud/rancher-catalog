@@ -5,4 +5,5 @@ services:
     ports:
       - 80:80/tcp
       - 25:25/tcp
-      
+    labels:
+        traefik.frontend.rule: Host:$strTraefikDomains
