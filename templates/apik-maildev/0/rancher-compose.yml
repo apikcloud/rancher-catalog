@@ -13,6 +13,11 @@ questions:
            Example: 'postgres=true'
         required: true
         type: "string"
+    -   variable: strTraefikDomains
+        label: "Domaine Maildev"
+        required: true
+        type: "string"
+        default: "maildev.apik.cloud"
 services:
   maildev:
     start_on_create: true
