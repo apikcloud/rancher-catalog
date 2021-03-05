@@ -1,4 +1,11 @@
 version: '2'
+
+catalog:
+    name: "Apik Mail Dev"
+    version: "1.0"
+    description: "Apik Mail Dev"
+    minimum_rancher_version: v1.3.2
+
 services:
   maildev:
     start_on_create: true
