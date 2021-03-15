@@ -2,7 +2,7 @@ version: '2'
 
 services:
   wisper:
-    image: apik/wisper:latest
+    image: apik/wisper:linux
     labels:
       io.rancher.scheduler.affinity:host_label: prod=true
     
