@@ -5,4 +5,8 @@ services:
     image: apik/wisper:linux
     labels:
       io.rancher.scheduler.affinity:host_label: prod=true
-    
+    environment:
+      WISPER_USERNAME: $wisper_username
+      WISPER_DB: $wisper_db
+      WISPER_URL: $wisper_url
+      WISPER_PASSWORD: $wisper_password
