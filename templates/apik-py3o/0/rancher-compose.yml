@@ -7,5 +7,5 @@ catalog:
     minimum_rancher_version: v1.3.2
 
 services:
-  cleanup:
+  py3o:
     start_on_create: true

@@ -2,5 +2,4 @@ version: '2'
 services:
   py3o:
     image: xcgd/py3o
-    volumes:
-    - /var/run/docker.sock:/var/run/docker.sock
+   
