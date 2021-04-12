@@ -2,8 +2,10 @@ version: '2'
 services:
   maildev:
     image: maildev/maildev
-    ports:
-      - 80:80/tcp
-      - 25:25/tcp
+    
     labels:
-        traefik.frontend.rule: Host:$strTraefikDomains
+        io.rancher.container.hostname_override: container_name
+        io.rancher.scheduler.affinity:host_label: maildev=true
+        traefik.frontend.rule: Host:maildev.apik.cloud
+        traefik.enable: true
+        traefik.port: '1080'

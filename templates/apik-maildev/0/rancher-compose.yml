@@ -5,19 +5,6 @@ catalog:
     version: "1.0"
     description: "Apik Mail Dev"
     minimum_rancher_version: v1.3.2
-questions:
-    -   variable: host_label
-        label: "Host with Label to put gitlab on"
-        description: |
-           Host label to use as postgres 'value' tag.
-           Example: 'postgres=true'
-        required: true
-        type: "string"
-    -   variable: strTraefikDomains
-        label: "Domaine Maildev"
-        required: true
-        type: "string"
-        default: "maildev.apik.cloud"
 services:
   maildev:
     start_on_create: true
