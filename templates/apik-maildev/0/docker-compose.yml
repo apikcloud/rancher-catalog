@@ -2,7 +2,8 @@ version: '2'
 services:
   maildev:
     image: maildev/maildev
-    
+    ports:
+      - "1025:25"
     labels:
         io.rancher.container.hostname_override: container_name
         io.rancher.scheduler.affinity:host_label: maildev=true
