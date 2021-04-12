@@ -5,6 +5,23 @@ catalog:
     version: "2.0"
     description: "Wisper Hubspot"
     minimum_rancher_version: v1.3.2
+    questions:
+        -   variable: wisper_username
+            label: "Wisper Username"
+            required: true
+            type: "string"
+        -   variable: wisper_db
+            label: "Wisper DB"
+            required: true
+            type: "string"
+        -   variable: wisper_url
+            label: "Wisper URL"
+            required: true
+            type: "string"
+        -   variable: wisper_password
+            label: "Wisper Password"
+            required: true
+            type: "string"
 
 services:
   wisper:
