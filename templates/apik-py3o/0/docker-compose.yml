@@ -1,5 +1,9 @@
 version: '2'
 services:
   py3o:
-    image: xcgd/py3o
-   
+    image: xcgd/py3o:1.0.0
+    stdin_open: true
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.container.hostname_override: container_name
