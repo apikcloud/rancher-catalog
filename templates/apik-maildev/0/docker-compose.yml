@@ -8,4 +8,4 @@ services:
         io.rancher.scheduler.affinity:host_label: maildev=true
         traefik.frontend.rule: Host:maildev.apik.cloud
         traefik.enable: true
-        traefik.port: '1080'
+        traefik.port: '80'
