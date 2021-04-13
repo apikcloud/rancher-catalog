@@ -4,14 +4,11 @@ services:
     image: bitnami/phppgadmin
     stdin_open: true
     tty: true
-    ports:
-      - '80:8080'
-      - '443:8443'
     environment:
-      DATABASE_HOST : $database_host
+      DATABASE_HOST: $database_host
     labels:
       io.rancher.container.hostname_override: container_name
-      io.rancher.scheduler.affinity:host_label: py3o=true
+      io.rancher.scheduler.affinity:host_label: phppgadmin=true
       traefik.frontend.rule: Host:phppgadmin.apik.cloud
       traefik.enable: true
       traefik.port: '80'
