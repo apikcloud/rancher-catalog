@@ -11,4 +11,4 @@ services:
       io.rancher.scheduler.affinity:host_label: phppgadmin=true
       traefik.frontend.rule: Host:phppgadmin.apik.cloud
       traefik.enable: true
-      traefik.port: '80'
+      traefik.port: '8080'
