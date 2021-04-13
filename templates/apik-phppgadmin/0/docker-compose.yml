@@ -11,7 +11,7 @@ services:
       DATABASE_HOST : $database_host
     labels:
       io.rancher.container.hostname_override: container_name
-      io.rancher.scheduler.affinity:host_label: phppgadmin=true
+      io.rancher.scheduler.affinity:host_label: py3o=true
       traefik.frontend.rule: Host:phppgadmin.apik.cloud
       traefik.enable: true
       traefik.port: '80'
