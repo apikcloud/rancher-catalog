@@ -1,0 +1,19 @@
+version: '2'
+
+catalog:
+    name: "Apik PHP Pg Admin"
+    version: "1.0"
+    description: "Apik Phppgadmin"
+    minimum_rancher_version: v1.3.2
+    
+    questions:
+      -   variable: database_host
+          label: "Hote postgresql"
+          required: true
+          type: "string"
+          default: "postgres.apik-db-1"
+    
+services:
+  phppgadmin:
+    scale: 1
+    start_on_create: true
