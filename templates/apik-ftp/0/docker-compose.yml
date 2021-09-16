@@ -7,7 +7,6 @@ volumes:
   ftp-conf-files:
     external: true
     driver: rancher-nfs
-
 services:
   ftpd_server:
     image: stilliard/pure-ftpd
