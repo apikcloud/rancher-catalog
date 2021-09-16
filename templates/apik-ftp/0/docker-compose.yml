@@ -7,13 +7,13 @@ services:
       - "21:21"
       - "30000-30009:30000-30009"
     volumes:
-      - ftp-app-data:/home/$username/
+      - ftp-app-data:/home/username/
       - ftp-conf-files:/etc/pure-ftpd/passwd
     environment:
       PUBLICHOST: "$strTraefikDomains"
       FTP_USER_NAME: $username
       FTP_USER_PASS: $mypass
-      FTP_USER_HOME: /home/$username
+      FTP_USER_HOME: /home/username
     restart: always
     labels:
       io.rancher.container.hostname_override: container_name
