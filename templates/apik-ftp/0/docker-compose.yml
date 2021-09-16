@@ -10,7 +10,7 @@ services:
   ftpd-server:
     image: stilliard/pure-ftpd
     ports:
-      - 21:21
+      - 30021:21
       - 30000:30000
       - 30001:30001
       - 30002:30002
@@ -33,7 +33,7 @@ services:
     labels:
       io.rancher.container.hostname_override: container_name
       traefik.enable: true
-      traefik.port: 21
+      traefik.port: 30021
       traefik.backend.loadbalancer.stickiness: true
       traefik.backend.loadbalancer.method: drr
       traefik.backend.buffering.retryExpression: IsNetworkError() && Attempts() < 5
