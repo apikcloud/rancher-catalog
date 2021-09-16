@@ -27,6 +27,13 @@ services:
         gitlab_rails['smtp_enable_starttls_auto'] = true
         gitlab_rails['smtp_tls'] = false
         gitlab_rails['gitlab_email_from'] = '$username_smtp'
+        gitlab_rails['backup_upload_connection'] = {
+           'provider' => 'AWS',
+           'region' => 'eu-west-1',
+           'aws_access_key_id' => '$aws_key',
+           'aws_secret_access_key' => '$aws_secret'
+        }
+        gitlab_rails['backup_upload_remote_directory'] = '$aws_bucket'
     volumes:
     - gitlab-app-data:/var/opt/gitlab
     - gitlab-log-data:/var/log/gitlab

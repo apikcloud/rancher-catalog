@@ -1,0 +1,28 @@
+version: "3"
+catalog:
+  name: "FTP"
+  version: "1.0"
+  description: "FTP by Apik"
+  minimum_rancher_version: v1.3.2
+
+  questions:
+    - variable: strTraefikDomains
+      label: "Domaine FTP"
+      required: true
+      type: "string"
+      default: "ftp.apik.cloud"
+    - variable: username
+      label: "Username"
+      required: true
+      type: "string"
+    - variable: password
+      label: "Mot de passe"
+      required: true
+      type: "password"
+    - variable: host_label
+      label: "Host with Label to put ftp on"
+      description: |
+        Host label to use as postgres 'value' tag.
+        Example: 'postgres=true'
+      required: true
+      type: "string"
