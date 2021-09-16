@@ -1,12 +1,4 @@
 version: "2"
-
-volumes:
-  ftp-app-data:
-    external: true
-    driver: rancher-nfs
-  ftp-conf-files:
-    external: true
-    driver: rancher-nfs
 services:
   ftpd_server:
     image: stilliard/pure-ftpd
@@ -14,7 +6,7 @@ services:
     ports:
       - "21:21"
       - "30000-30009:30000-30009"
-    volumes: # remember to replace /folder_on_disk/ with the path to where you want to store the files on the host machine
+    volumes:
       - ftp-app-data:/home/$username/
       - ftp-conf-files:/etc/pure-ftpd/passwd
     environment:
@@ -32,3 +24,10 @@ services:
       traefik.backend.buffering.retryExpression: IsNetworkError() && Attempts() < 5
       traefik.frontend.rule: Host:$strTraefikDomains
       io.rancher.scheduler.affinity:host_label: ${host_label}
+volumes:
+  ftp-app-data:
+    external: true
+    driver: rancher-nfs
+  ftp-conf-files:
+    external: true
+    driver: rancher-nfs
