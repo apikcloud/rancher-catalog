@@ -26,3 +26,4 @@ catalog:
         Example: 'postgres=true'
       required: true
       type: "string"
+      default: "prod=true"
