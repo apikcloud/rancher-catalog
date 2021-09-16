@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 volumes:
   ftp-app-data:
     external: true
