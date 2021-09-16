@@ -1,8 +1,14 @@
 version: "2"
+volumes:
+  ftp-app-data:
+    external: true
+    driver: rancher-nfs
+  ftp-conf-files:
+    external: true
+    driver: rancher-nfs
 services:
-  ftpd_server:
+  ftpd-server:
     image: stilliard/pure-ftpd
-    container_name: pure-ftpd
     ports:
       - "21:21"
       - "30000-30009:30000-30009"
@@ -24,10 +30,3 @@ services:
       traefik.backend.buffering.retryExpression: IsNetworkError() && Attempts() < 5
       traefik.frontend.rule: Host:$strTraefikDomains
       io.rancher.scheduler.affinity:host_label: ${host_label}
-volumes:
-  ftp-app-data:
-    external: true
-    driver: rancher-nfs
-  ftp-conf-files:
-    external: true
-    driver: rancher-nfs
