@@ -43,6 +43,13 @@ catalog:
       required: false
       default: ""
 
+    - variable: intDomains
+      label: "Odoo Domains"
+      description: "Odoo Domains environment var"
+      type: "int"
+      required: true
+      default: "1"
+
     - variable: strTraefikDomains2
       label: "Server names 2"
       description: "A comma (,) separated and terminated list of max 8 domain names for alternate access to Odoo instance. E.g. ourodoo.acme.com,www.acme.org;"

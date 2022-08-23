@@ -20,6 +20,7 @@ services:
             traefik.frontend.redirect.regex: $strTraefikRedirectRegex
             traefik.frontend.redirect.replacement: $strTraefikRedirectReplacement
             traefik.frontend.redirect.permanent: true
+        {{- if > .Values.intDomains "1"}}
             traefik.longpolling.frontend2.rule: Host:$strTraefikDomains2;PathPrefix:/longpolling/
             traefik.longpolling.frontend2.redirect.regex: $strTraefikRedirectRegex2
             traefik.longpolling.frontend2.redirect.replacement: $strTraefikRedirectReplacement2
@@ -36,6 +37,7 @@ services:
             traefik.longpolling.frontend5.redirect.regex: $strTraefikRedirectRegex5
             traefik.longpolling.frontend5.redirect.replacement: $strTraefikRedirectReplacement5
             traefik.longpolling.frontend5.redirect.permanent: true
+        {{- end}}
         {{- else}}
             traefik.odoo.port: 8069
             traefik.odoo.frontend.rule: Host:$strTraefikDomains
