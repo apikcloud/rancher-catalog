@@ -49,6 +49,7 @@ services:
             traefik.longpolling.frontend.redirect.regex: $strTraefikRedirectRegex
             traefik.longpolling.frontend.redirect.replacement: $strTraefikRedirectReplacement
             traefik.longpolling.frontend.redirect.permanent: true
+        {{- if gt .Values.intDomains "1"}}
             traefik.longpolling.frontend2.rule: Host:$strTraefikDomains2;PathPrefix:/longpolling/
             traefik.longpolling.frontend2.redirect.regex: $strTraefikRedirectRegex2
             traefik.longpolling.frontend2.redirect.replacement: $strTraefikRedirectReplacement2
@@ -65,6 +66,7 @@ services:
             traefik.longpolling.frontend5.redirect.regex: $strTraefikRedirectRegex5
             traefik.longpolling.frontend5.redirect.replacement: $strTraefikRedirectReplacement5
             traefik.longpolling.frontend5.redirect.permanent: true
+        {{- end}}
         {{- end}}
 
         volumes:
