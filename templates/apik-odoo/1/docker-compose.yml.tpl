@@ -21,22 +21,28 @@ services:
             traefik.frontend.redirect.replacement: $strTraefikRedirectReplacement
             traefik.frontend.redirect.permanent: true
         {{- if gt .Values.intDomains "1"}}
-            traefik.longpolling.frontend2.rule: Host:$strTraefikDomains2;PathPrefix:/longpolling/
-            traefik.longpolling.frontend2.redirect.regex: $strTraefikRedirectRegex2
-            traefik.longpolling.frontend2.redirect.replacement: $strTraefikRedirectReplacement2
-            traefik.longpolling.frontend2.redirect.permanent: true
-            traefik.longpolling.frontend3.rule: Host:$strTraefikDomains3;PathPrefix:/longpolling/
-            traefik.longpolling.frontend3.redirect.regex: $strTraefikRedirectRegex3
-            traefik.longpolling.frontend3.redirect.replacement: $strTraefikRedirectReplacement3
-            traefik.longpolling.frontend3.redirect.permanent: true
-            traefik.longpolling.frontend4.rule: Host:$strTraefikDomains4;PathPrefix:/longpolling/
-            traefik.longpolling.frontend4.redirect.regex: $strTraefikRedirectRegex4
-            traefik.longpolling.frontend4.redirect.replacement: $strTraefikRedirectReplacement4
-            traefik.longpolling.frontend4.redirect.permanent: true
-            traefik.longpolling.frontend5.rule: Host:$strTraefikDomains5;PathPrefix:/longpolling/
-            traefik.longpolling.frontend5.redirect.regex: $strTraefikRedirectRegex5
-            traefik.longpolling.frontend5.redirect.replacement: $strTraefikRedirectReplacement5
-            traefik.longpolling.frontend5.redirect.permanent: true
+            traefik.frontend.rule: Host:$strTraefikDomains2
+            traefik.frontend.redirect.regex: $strTraefikRedirectRegex2
+            traefik.frontend.redirect.replacement: $strTraefikRedirectReplacement2
+            traefik.frontend.redirect.permanent: true
+        {{- end}}
+        {{- if gt .Values.intDomains "2"}}    
+            traefik.frontend.rule: Host:$strTraefikDomains3
+            traefik.frontend.redirect.regex: $strTraefikRedirectRegex3
+            traefik.frontend.redirect.replacement: $strTraefikRedirectReplacement3
+            traefik.frontend.redirect.permanent: true
+        {{- end}}
+        {{- if gt .Values.intDomains "3"}}    
+            traefik.frontend.rule: Host:$strTraefikDomains4
+            traefik.frontend.redirect.regex: $strTraefikRedirectRegex4
+            traefik.frontend.redirect.replacement: $strTraefikRedirectReplacement4
+            traefik.frontend.redirect.permanent: true
+        {{- end}}
+        {{- if gt .Values.intDomains "5"}}    
+            traefik.frontend.rule: Host:$strTraefikDomains5
+            traefik.frontend.redirect.regex: $strTraefikRedirectRegex5
+            traefik.frontend.redirect.replacement: $strTraefikRedirectReplacement5
+            traefik.frontend.redirect.permanent: true
         {{- end}}
         {{- else}}
             traefik.odoo.port: 8069
@@ -50,18 +56,40 @@ services:
             traefik.longpolling.frontend.redirect.replacement: $strTraefikRedirectReplacement
             traefik.longpolling.frontend.redirect.permanent: true
         {{- if gt .Values.intDomains "1"}}
+            traefik.odoo.frontend2.rule: Host:$strTraefikDomains2
+            traefik.odoo.frontend2.redirect.regex: $strTraefikRedirectRegex2
+            traefik.odoo.frontend2.redirect.replacement: $strTraefikRedirectReplacement2
+            traefik.odoo.frontend2.redirect.permanent: true
             traefik.longpolling.frontend2.rule: Host:$strTraefikDomains2;PathPrefix:/longpolling/
             traefik.longpolling.frontend2.redirect.regex: $strTraefikRedirectRegex2
             traefik.longpolling.frontend2.redirect.replacement: $strTraefikRedirectReplacement2
             traefik.longpolling.frontend2.redirect.permanent: true
+        {{- end}}
+        {{- if gt .Values.intDomains "2"}}
+            traefik.odoo.frontend3.rule: Host:$strTraefikDomains3
+            traefik.odoo.frontend3.redirect.regex: $strTraefikRedirectRegex3
+            traefik.odoo.frontend3.redirect.replacement: $strTraefikRedirectReplacement3
+            traefik.odoo.frontend3.redirect.permanent: true 
             traefik.longpolling.frontend3.rule: Host:$strTraefikDomains3;PathPrefix:/longpolling/
             traefik.longpolling.frontend3.redirect.regex: $strTraefikRedirectRegex3
             traefik.longpolling.frontend3.redirect.replacement: $strTraefikRedirectReplacement3
             traefik.longpolling.frontend3.redirect.permanent: true
+        {{- end}}
+        {{- if gt .Values.intDomains "3"}}   
+            traefik.odoo.frontend4.rule: Host:$strTraefikDomains4
+            traefik.odoo.frontend4.redirect.regex: $strTraefikRedirectRegex4
+            traefik.odoo.frontend4.redirect.replacement: $strTraefikRedirectReplacement4
+            traefik.odoo.frontend4.redirect.permanent: true 
             traefik.longpolling.frontend4.rule: Host:$strTraefikDomains4;PathPrefix:/longpolling/
             traefik.longpolling.frontend4.redirect.regex: $strTraefikRedirectRegex4
             traefik.longpolling.frontend4.redirect.replacement: $strTraefikRedirectReplacement4
             traefik.longpolling.frontend4.redirect.permanent: true
+        {{- end}}
+        {{- if gt .Values.intDomains "5"}} 
+            traefik.odoo.frontend5.rule: Host:$strTraefikDomains5
+            traefik.odoo.frontend5.redirect.regex: $strTraefikRedirectRegex5
+            traefik.odoo.frontend5.redirect.replacement: $strTraefikRedirectReplacement5
+            traefik.odoo.frontend5.redirect.permanent: true   
             traefik.longpolling.frontend5.rule: Host:$strTraefikDomains5;PathPrefix:/longpolling/
             traefik.longpolling.frontend5.redirect.regex: $strTraefikRedirectRegex5
             traefik.longpolling.frontend5.redirect.replacement: $strTraefikRedirectReplacement5
