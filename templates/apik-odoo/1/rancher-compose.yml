@@ -1,13 +1,12 @@
-version: '2'
+version: "2"
 
 catalog:
-  name: "Odoo SaaS"
-  version: "12.5"
+  name: "Apik Odoo SaaS"
+  version: "1"
   description: "All-in-one management software"
   minimum_rancher_version: v1.3.2
   questions:
-
-# Docker image config
+    # Docker image config
 
     - variable: strImageName
       label: "Odoo Image Name"
@@ -21,7 +20,7 @@ catalog:
       required: true
       default: "12.0"
 
-# domains configuration
+    # domains configuration
 
     - variable: strTraefikDomains
       label: "Server names"
@@ -44,7 +43,91 @@ catalog:
       required: false
       default: ""
 
-    # TODO we would like to build this with the stack name + traefik domain 
+    - variable: strTraefikDomains2
+      label: "Server names 2"
+      description: "A comma (,) separated and terminated list of max 8 domain names for alternate access to Odoo instance. E.g. ourodoo.acme.com,www.acme.org;"
+      type: "string"
+      required: true
+      default: ""
+
+    - variable: strTraefikRedirectRegex2
+      label: "Redirect Regex 2"
+      description: "Redirect to another URL for that frontend. Must be set with Redirect Replacement"
+      type: "string"
+      required: false
+      default: ""
+
+    - variable: strTraefikRedirectReplacement2
+      label: "Redirect Replacement 2"
+      description: "Redirect to another URL for that frontend. Must be set with Redirect Regex"
+      type: "string"
+      required: false
+      default: ""
+
+    - variable: strTraefikDomains3
+      label: "Server names 3"
+      description: "A comma (,) separated and terminated list of max 8 domain names for alternate access to Odoo instance. E.g. ourodoo.acme.com,www.acme.org;"
+      type: "string"
+      required: true
+      default: ""
+
+    - variable: strTraefikRedirectRegex3
+      label: "Redirect Regex 3"
+      description: "Redirect to another URL for that frontend. Must be set with Redirect Replacement"
+      type: "string"
+      required: false
+      default: ""
+
+    - variable: strTraefikRedirectReplacement3
+      label: "Redirect Replacement 3"
+      description: "Redirect to another URL for that frontend. Must be set with Redirect Regex"
+      type: "string"
+      required: false
+      default: ""
+
+    - variable: strTraefikDomains4
+      label: "Server names 4"
+      description: "A comma (,) separated and terminated list of max 8 domain names for alternate access to Odoo instance. E.g. ourodoo.acme.com,www.acme.org;"
+      type: "string"
+      required: true
+      default: ""
+
+    - variable: strTraefikRedirectRegex4
+      label: "Redirect Regex 4"
+      description: "Redirect to another URL for that frontend. Must be set with Redirect Replacement"
+      type: "string"
+      required: false
+      default: ""
+
+    - variable: strTraefikRedirectReplacement4
+      label: "Redirect Replacement 4"
+      description: "Redirect to another URL for that frontend. Must be set with Redirect Regex"
+      type: "string"
+      required: false
+      default: ""
+
+    - variable: strTraefikDomains5
+      label: "Server names 5"
+      description: "A comma (,) separated and terminated list of max 8 domain names for alternate access to Odoo instance. E.g. ourodoo.acme.com,www.acme.org;"
+      type: "string"
+      required: true
+      default: ""
+
+    - variable: strTraefikRedirectRegex5
+      label: "Redirect Regex 5"
+      description: "Redirect to another URL for that frontend. Must be set with Redirect Replacement"
+      type: "string"
+      required: false
+      default: ""
+
+    - variable: strTraefikRedirectReplacement5
+      label: "Redirect Replacement 5"
+      description: "Redirect to another URL for that frontend. Must be set with Redirect Regex"
+      type: "string"
+      required: false
+      default: ""
+
+    # TODO we would like to build this with the stack name + traefik domain
     - variable: strMailCatchallDomain
       label: "Mail Catchall Domain"
       description: "Domain used for catchall, usually same domain as instance domain"
@@ -52,7 +135,7 @@ catalog:
       required: false
       default: ""
 
-# Odoo Configuration
+    # Odoo Configuration
 
     - variable: strAdminPassword
       label: "Odoo ADMIN_PASSWORD"
@@ -90,8 +173,7 @@ catalog:
         - debug_rpc_answer
         - notset
 
-# Database Configuration
-
+    # Database Configuration
     - variable: strDatabase
       label: "Odoo DB Name"
       description: "The Odoo PostgreSQL database to be created on deploy. If none is set, then no database is created"
@@ -145,7 +227,7 @@ catalog:
       required: false
       default: True
 
-# Performance Configuration
+    # Performance Configuration
 
     - variable: intWorkers
       label: "Odoo WORKERS"
@@ -213,7 +295,7 @@ catalog:
       required: true
       default: "1"
 
-# Entrypoint Odoo-SaaS
+    # Entrypoint Odoo-SaaS
 
     - variable: strFixDbs
       label: "FIX DBS (click-odoo-update)"
@@ -221,21 +303,21 @@ catalog:
       type: "string"
       required: false
 
-# Custom Repositories on entrypoint
+    # Custom Repositories on entrypoint
 
     - variable: multiReposYaml
       label: "Git Aggregator repos.yml"
       description: "Custom repositories to be aggregated on entrypoint."
       type: multiline
 
-# Custom Configuration on entrypoint
+    # Custom Configuration on entrypoint
 
     - variable: multiOdooConf
       label: "Custom odoo.conf"
       description: "Custom configuration for odoo.conf"
       type: multiline
 
-# Filestore / Sessions
+    # Filestore / Sessions
 
     - variable: strOdooDataFilestore
       label: "Odoo Filestore Path"
@@ -283,14 +365,14 @@ catalog:
       default: "odoo_data_sessions"
       type: "string"
 
-# Other configurations
+    # Other configurations
 
     - variable: strGCECloudsqlConnectionName
       label: "GCE Instance connection name"
       description: "If you set a value here a sidekick with cloudsql proxy will be configured to the configured Instance connection name"
       type: "string"
 
-# SMTP config
+    # SMTP config
 
     - variable: strSmtpServer
       label: "SMTP Server"
@@ -327,7 +409,7 @@ catalog:
       default: "odoo=true"
       type: "string"
 
-# Custom Environment Variables
+    # Custom Environment Variables
 
     - variable: multiEnvVariables
       label: "Environment Variables"
