@@ -6,9 +6,9 @@ services:
             POSTGRES_USER: ${strPgUser}
             POSTGRES_PASSWORD: ${strPgPassword}
             POSTGRES_DB: ${strDatabase}
-            PGDATA: ${strOdooDataPostgres}${strDatabase}/
+            PGDATA: ${strOdooDataPostgres}
         volumes:
-            - $strOdooPostgresVolumeName:${strOdooDataPostgres}${strDatabase}/
+            - apik-nfs:${strOdooDataPostgres}
         labels:
             io.rancher.scheduler.affinity:host_label: ${host_label}
     odoo:
