@@ -9,6 +9,8 @@ services:
             PGDATA: $${strOdooDataPostgres}/$${strDatabase}
         volumes:
             - $strOdooPostgresVolumeName:$${strOdooDataPostgres}/$${strDatabase}
+        labels:
+            io.rancher.scheduler.affinity:host_label: ${host_label}
     odoo:
         tty: true
         stdin_open: true
