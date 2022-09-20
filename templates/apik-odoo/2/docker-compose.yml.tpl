@@ -6,9 +6,9 @@ services:
             POSTGRES_USER: ${strPgUser}
             POSTGRES_PASSWORD: ${strPgPassword}
             POSTGRES_DB: ${strDatabase}
-            PGDATA: /var/lib/postgresql/data/pgdata
+            PGDATA: $strOdooDataPostgres
         volumes:
-            - db:/var/lib/postgresql/data/pgdata
+            - $strOdooPostgresVolumeName:$strOdooDataPostgres
     odoo:
         tty: true
         stdin_open: true
@@ -166,5 +166,8 @@ volumes:
     external: true
   {{- end}}
   $strOdooFilestoreVolumeName:
+    driver: rancher-nfs
+    external: true
+  $strOdooPostgresVolumeName:
     driver: rancher-nfs
     external: true
