@@ -8,7 +8,7 @@ services:
             POSTGRES_DB: ${strDatabase}
             PGDATA: ${strOdooDataPostgres}
         volumes:
-            - $strOdooPostgresVolumeName/${strDatabase}:${strOdooDataPostgres}
+            - $strOdooPostgresVolumeName:${strOdooDataPostgres}${strDatabase}/
         labels:
             io.rancher.scheduler.affinity:host_label: ${host_label}
     odoo:
