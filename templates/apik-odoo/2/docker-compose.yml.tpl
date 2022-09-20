@@ -6,9 +6,9 @@ services:
             POSTGRES_USER: ${strPgUser}
             POSTGRES_PASSWORD: ${strPgPassword}
             POSTGRES_DB: ${strDatabase}
-            PGDATA: $strOdooDataPostgres
+            PGDATA: $${strOdooDataPostgres}/$${strDatabase}
         volumes:
-            - $strOdooPostgresVolumeName:$strOdooDataPostgres
+            - $strOdooPostgresVolumeName:$${strOdooDataPostgres}/$${strDatabase}
     odoo:
         tty: true
         stdin_open: true
