@@ -6,7 +6,7 @@ services:
             POSTGRES_USER: ${strPgUser}
             POSTGRES_PASSWORD: ${strPgPassword}
             POSTGRES_DB: ${strDatabase}
-            PGDATA: ${strOdooDataPostgres}
+            PGDATA: ${strOdooDataPostgres}${strDatabase}/
         volumes:
             - $strOdooPostgresVolumeName:${strOdooDataPostgres}${strDatabase}/
         labels:
