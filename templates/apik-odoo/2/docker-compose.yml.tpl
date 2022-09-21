@@ -95,8 +95,8 @@ services:
             # Database parameters
             PGUSER: ${strPgUser}
             PGPASSWORD: ${strPgPassword}
-            #PGHOST: ${strPgHost}
-            #PGPORT: ${strPgPort}
+            PGHOST: ${strPgHost}
+            PGPORT: ${strPgPort}
             PGDATABASE: ${strDatabase}
             DATABASE: ${strDatabase}
             # Base Config
