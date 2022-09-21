@@ -89,13 +89,14 @@ services:
         {{- if eq .Values.enumSessionsStore "filestore" }}
             - $strOdooSessionsVolumeName:$strOdooDataSessions
         {{- end}}
-
+        depends_on:
+            - db
         environment:
             # Database parameters
             PGUSER: ${strPgUser}
             PGPASSWORD: ${strPgPassword}
-            PGHOST: ${strPgHost}
-            PGPORT: ${strPgPort}
+            #PGHOST: ${strPgHost}
+            #PGPORT: ${strPgPort}
             PGDATABASE: ${strDatabase}
             DATABASE: ${strDatabase}
             # Base Config
