@@ -1,7 +1,7 @@
 version: "2"
 
 catalog:
-  name: "Apik Odoo SaaS"
+  name: "Apik Odoo 16 SaaS"
   version: "1"
   description: "All-in-one management software"
   minimum_rancher_version: v1.3.2
