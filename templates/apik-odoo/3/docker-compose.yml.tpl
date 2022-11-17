@@ -126,7 +126,7 @@ services:
             MAIL_CATCHALL_DOMAIN: ${strMailCatchallDomain}
             # Redis Config
 {{- if eq .Values.enumSessionsStore "redis" }}
-            ENABLE_REDIS: True
+            ENABLE_REDIS: False
             REDIS_HOST: ${strRedisHost}
             REDIS_PORT: 6379
             REDIS_PASS: ${strRedisPass}
