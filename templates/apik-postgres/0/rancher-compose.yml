@@ -1,0 +1,38 @@
+version: '2'
+
+catalog:
+    name: "Apik Postgresql"
+    version: "1.0"
+    description: "Apik Postgresql"
+    minimum_rancher_version: v1.3.2
+    questions:
+      - variable: strVersion
+        label: "Postgres Version"
+        description: "For eg. 12"
+        type: "string"
+        required: true
+    
+      - variable: strOdooPostgresVolumeName
+        label: "Odoo Postgres Volume Name"
+        type: "string"
+        required: true
+      
+      - variable: strOdooDataPostgres
+        label: "Odoo Postgres Data"
+        type: "string"
+        required: true
+
+      - variable: strPgDB
+        label: "Odoo Postgres DB"
+        type: "string"
+        required: true
+
+      - variable: strPgPassword
+        label: "Odoo Postgres Password"
+        type: "string"
+        required: true 
+      
+
+services:
+  postgres:
+    start_on_create: true
