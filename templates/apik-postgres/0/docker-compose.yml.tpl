@@ -1,11 +1,19 @@
 version: '2'
 services:
+  postgres-data:
+    image: busybox
+    labels:
+      io.rancher.container.start_once: true
+    volumes:
+      - pgdata:/var/lib/postgresql/data/pgdata
+      
   postgres:
     image: postgres:$strVersion
     labels:
       io.rancher.scheduler.affinity:host_label: pg_rancher=true
-    volumes:
-      - $strOdooPostgresVolumeName:$strOdooDataPostgres
+      io.rancher.sidekicks: postgres-data
+    volumes-from:
+      - postgres-data
     environment:
       # Database parameters
       PGDATA: ${strOdooDataPostgres}
