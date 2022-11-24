@@ -17,4 +17,4 @@ services:
 volumes:
   pgdata:
     driver: rancher-nfs
-    per_container: true
+    
