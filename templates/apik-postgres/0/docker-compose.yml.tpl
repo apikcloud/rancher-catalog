@@ -12,7 +12,7 @@ services:
     labels:
       io.rancher.scheduler.affinity:host_label: pg_rancher=true
       io.rancher.sidekicks: postgres-data
-    volumes-from:
+    volumes_from:
       - postgres-data
     environment:
       # Database parameters
