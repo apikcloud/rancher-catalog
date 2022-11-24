@@ -5,7 +5,7 @@ services:
     labels:
       io.rancher.container.start_once: true
     volumes:
-      - $strOdooPostgresVolumeName:/var/lib/postgresql/data/pgdata
+      - pgdata:/var/lib/postgresql/data/pgdata
       
   postgres:
     image: postgres:$strVersion
@@ -22,6 +22,6 @@ services:
       POSTGRES_USER: odoo
 
 volumes:
-  $strOdooPostgresVolumeName:
+  pgdata:
     driver: rancher-nfs
     per_container: true
