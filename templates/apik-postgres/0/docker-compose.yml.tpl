@@ -12,8 +12,8 @@ services:
     labels:
       io.rancher.scheduler.affinity:host_label: pg_rancher=true
       io.rancher.sidekicks: postgres-data
-    volumes_from:
-      - postgres-data
+    volumes:
+      - pgdata
     environment:
       # Database parameters
       PGDATA: ${strOdooDataPostgres}
