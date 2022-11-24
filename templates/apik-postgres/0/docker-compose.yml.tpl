@@ -18,3 +18,4 @@ volumes:
   $strOdooPostgresVolumeName:
     driver: rancher-nfs
     per_container: true
+    external: true
