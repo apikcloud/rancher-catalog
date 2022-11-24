@@ -16,11 +16,13 @@ catalog:
         label: "Odoo Postgres Volume Name"
         type: "string"
         required: true
+        default: "odoo_data_postgres"
       
       - variable: strOdooDataPostgres
         label: "Odoo Postgres Data"
         type: "string"
         required: true
+        default: "/var/lib/postgresql/data/pgdata"
 
       - variable: strPgDB
         label: "Odoo Postgres DB"

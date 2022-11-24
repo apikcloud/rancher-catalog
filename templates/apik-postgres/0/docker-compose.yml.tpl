@@ -3,7 +3,7 @@ services:
   postgres:
     image: postgres:$strVersion
     labels:
-      io.rancher.scheduler.affinity:host_label: nfs=true
+      io.rancher.scheduler.affinity:host_label: pg_rancher=true
     volumes:
       - $strOdooPostgresVolumeName:$strOdooDataPostgres
     environment:
@@ -12,4 +12,8 @@ services:
       POSTGRES_DB: ${strPgDB}
       POSTGRES_PASSWORD: ${strPgPassword}
       POSTGRES_USER: odoo
-      
+
+volumes:
+  $strOdooPostgresVolumeName:
+    driver: rancher-nfs
+    external: true
