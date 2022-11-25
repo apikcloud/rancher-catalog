@@ -17,4 +17,4 @@ services:
 volumes:
   data:
     driver: rancher-nfs
-    per_container: true
+    
