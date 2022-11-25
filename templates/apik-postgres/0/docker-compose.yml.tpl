@@ -6,7 +6,7 @@ services:
     labels:
       io.rancher.scheduler.affinity:host_label: pg_rancher=true
     volumes:
-      - odoo_data_postgres:${strOdooDataPostgres}
+      - data:${strOdooDataPostgres}
     environment:
       # Database parameters
       PGDATA: ${strOdooDataPostgres}
@@ -15,6 +15,6 @@ services:
       POSTGRES_USER: odoo
 
 volumes:
-  odoo_data_postgres:
+  data:
     driver: rancher-nfs
     per_container: true
