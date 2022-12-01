@@ -32,7 +32,13 @@ catalog:
       - variable: strPgPassword
         label: "Odoo Postgres Password"
         type: "string"
-        required: true 
+        required: true
+      
+      - variable: strNodeExecution
+        label: "Node d'exécution"
+        type: "string"
+        required: true
+        default: "pg_rancher=true"
       
 
 services:
