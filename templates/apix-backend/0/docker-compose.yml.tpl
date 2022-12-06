@@ -8,8 +8,6 @@ services:
 
   api:
     image: apik/apix-backend:${strVersion}
-    ports:
-      - 8004:8000
     command: start_api
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
@@ -27,12 +25,12 @@ services:
       - redis
     labels:
       io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
-      traefik.frontend.rule: Host:backend-api.apik.cloud
       traefik.enable: 'true'
+      traefik.port: '8000'
+      traefik.frontend.rule: Host:backend-api.apik.cloud
       traefik.backend.buffering.retryExpression: IsNetworkError() && Attempts() < 5
       traefik.backend.loadbalancer.method: drr
       traefik.backend.loadbalancer.stickiness: 'true'
-      traefik.port: '8004'
 
   worker:
     image: apik/apix-backend:${strVersion}
@@ -59,7 +57,7 @@ services:
     image: mher/flower:0.9.7
     command: ['flower', '--broker=redis://redis:6379', '--port=5555']
     ports:
-      - 5557:5555
+      - 5555:5555
     depends_on:
       - api
       - redis
@@ -71,7 +69,7 @@ services:
       traefik.backend.buffering.retryExpression: IsNetworkError() && Attempts() < 5
       traefik.backend.loadbalancer.method: drr
       traefik.backend.loadbalancer.stickiness: 'true'
-      traefik.port: '5557'
+      traefik.port: '5555'
 
   notebook:
     image: apik/notebook-git:latest
@@ -86,8 +84,10 @@ services:
       - JUPYTER_ENABLE_LAB=yes
       - GIT_USERNAME=${strGitUsername}
       - GIT_EMAIL=${strGitEmail}
+      - NB_GID=999
+      - NB_IUD=1000
     volumes:
-      - backend-app:/home/jovyan/work
+      - backend-app:/home/jovyan/app
     labels:
       io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
       traefik.frontend.rule: Host:backend-notebook.apik.cloud
