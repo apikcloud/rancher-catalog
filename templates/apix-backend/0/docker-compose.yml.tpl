@@ -75,6 +75,7 @@ services:
     image: apik/notebook-git:latest
     ports:
       - 8888:8888
+    user: root
     depends_on:
       - api
       - redis
