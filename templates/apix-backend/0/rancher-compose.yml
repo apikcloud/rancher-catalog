@@ -13,8 +13,6 @@ catalog:
         required: true
         default: "latest"
 
-
-
       - variable: strRancherSecretKey
         label: "Rancher Secret Key"
         type: "string"
@@ -57,3 +55,20 @@ catalog:
         label: "Google Storage - default bucket name"
         type: "string"
         required: true
+
+services:
+  redis:
+    scale: 1
+    start_on_create: true
+  api:
+    scale: 1
+    start_on_create: true
+  worker:
+    scale: 1
+    start_on_create: true
+  flower:
+    scale: 1
+    start_on_create: true
+  notebook:
+    scale: 1
+    start_on_create: false

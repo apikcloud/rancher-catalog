@@ -1,8 +1,11 @@
 version: '2'
 services:
 
+  redis:
+    image: redis:6-alpine
+
   api:
-    image: apix-backend:${strVersion}
+    image: apik/apix-backend:${strVersion}
     ports:
       - 8004:8000
     command: start_api
@@ -14,7 +17,7 @@ services:
       - RANCHER_URL=${strRancherUrl}
       - GOOGLE_DEFAULT_BUCKET=${strGoogleDefaultBucket}
     volumes:
-      - backend-data-app:/usr/src/app
+      - backend-app:/usr/src/app
       - backend-data-input:/usr/src/input
       - backend-data-output:/usr/src/output
       - backend-data-filestore:/usr/src/filestore
@@ -30,10 +33,10 @@ services:
       traefik.port: '8004'
 
   worker:
-    image: apix-backend:${strVersion}
+    image: apik/apix-backend:${strVersion}
     command: start_worker
     volumes:
-      - backend-data-app:/usr/src/app
+      - backend-app:/usr/src/app
       - backend-data-input:/usr/src/input
       - backend-data-output:/usr/src/output
       - backend-data-filestore:/usr/src/filestore
@@ -47,9 +50,6 @@ services:
     depends_on:
       - api
       - redis
-
-  redis:
-    image: redis:6-alpine
 
   flower:
     image: mher/flower:0.9.7
@@ -70,16 +70,18 @@ services:
       traefik.port: '5557'
 
   notebook:
-    image: notebook-git:latest
+    image: apik/notebook-git:latest
     ports:
       - 8888:8888
+    depends_on:
+      - api
     environment:
       - JUPYTER_TOKEN=${strNotebookToken}
       - JUPYTER_ENABLE_LAB=yes
       - GIT_USERNAME=${strGitUsername}
       - GIT_EMAIL=${strGitEmail}
     volumes:
-      - backend-data-app:/home/jovyan/work
+      - backend-app:/home/jovyan/work
     labels:
       io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
       traefik.frontend.rule: Host:backend-notebook.apik.cloud
@@ -90,7 +92,7 @@ services:
       traefik.port: '8888'
 
 volumes:
-  backend-data-app:
+  backend-app:
     driver: rancher-nfs
   backend-data-input:
     driver: rancher-nfs
