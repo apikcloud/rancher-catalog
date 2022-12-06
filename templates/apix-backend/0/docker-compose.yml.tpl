@@ -3,6 +3,8 @@ services:
 
   redis:
     image: redis:6-alpine
+    labels:
+      io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
 
   api:
     image: apik/apix-backend:${strVersion}
@@ -50,6 +52,8 @@ services:
     depends_on:
       - api
       - redis
+    labels:
+      io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
 
   flower:
     image: mher/flower:0.9.7
@@ -75,6 +79,8 @@ services:
       - 8888:8888
     depends_on:
       - api
+      - redis
+      - worker
     environment:
       - JUPYTER_TOKEN=${strNotebookToken}
       - JUPYTER_ENABLE_LAB=yes
