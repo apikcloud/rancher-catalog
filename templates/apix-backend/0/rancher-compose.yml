@@ -1,0 +1,59 @@
+version: '2'
+
+catalog:
+    name: "ApiX Backend"
+    version: "1.0"
+    description: "ApiX Backend API"
+    minimum_rancher_version: v1.3.2
+    questions:
+      - variable: strVersion
+        label: "Backend version"
+        description: "For eg. 1.0"
+        type: "string"
+        required: true
+        default: "latest"
+
+
+
+      - variable: strRancherSecretKey
+        label: "Rancher Secret Key"
+        type: "string"
+        required: true
+
+      - variable: strRancherAccessKey
+        label: "Rancher Access Key"
+        type: "string"
+        required: true
+
+      - variable: strRancherUrl
+        label: "Rancher URL"
+        type: "string"
+        required: true
+
+      - variable: strNodeExecution
+        label: "Execution Node"
+        type: "string"
+        required: true
+        default: "backend_api=true"
+
+      - variable: strNotebookToken
+        label: "Notebook Token"
+        type: "string"
+        required: true
+
+      - variable: strGitUsername
+        label: "Git: Username"
+        description: "For eg. John Doe"
+        type: "string"
+        required: false
+
+      - variable: strGitEmail
+        label: "Git: User email"
+        description: "For eg. johndoe@mail.com"
+        type: "string"
+        required: false
+
+      - variable: strGoogleDefaultBucket
+        label: "Google Storage - default bucket name"
+        type: "string"
+        required: true
