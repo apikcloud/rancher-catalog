@@ -78,6 +78,8 @@ services:
     ports:
       - 8888:8888
     # user: root
+    group_add:
+      - 999
     depends_on:
       - api
       - redis
