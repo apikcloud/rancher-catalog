@@ -19,7 +19,7 @@ services:
       - APP_DIR=${strAppDir}
       - GIT_URL=${strGitUrl}
     volumes:
-      - backend-app:/usr/src/app
+      - backend-app:${strAppDir}
       - backend-data-input:/usr/src/input
       - backend-data-output:/usr/src/output
       - backend-data-filestore:/usr/src/filestore
@@ -38,7 +38,7 @@ services:
     image: apik/apix-backend:${strVersion}
     command: start_worker
     volumes:
-      - backend-app:/usr/src/app
+      - backend-app:${strAppDir}
       - backend-data-input:/usr/src/input
       - backend-data-output:/usr/src/output
       - backend-data-filestore:/usr/src/filestore
@@ -102,10 +102,6 @@ services:
 
 volumes:
   backend-app:
-    driver: rancher-nfs
   backend-data-input:
-    driver: rancher-nfs
   backend-data-output:
-    driver: rancher-nfs
   backend-data-filestore:
-    driver: rancher-nfs
