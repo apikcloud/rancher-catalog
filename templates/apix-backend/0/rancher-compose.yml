@@ -19,6 +19,13 @@ catalog:
         required: true
         default: "latest"
 
+      - variable: strNotebookVersion
+        label: "Notebook version"
+        description: "For eg. 1.0"
+        type: "string"
+        required: true
+        default: "latest"
+
       - variable: strRancherSecretKey
         label: "Rancher Secret Key"
         type: "string"

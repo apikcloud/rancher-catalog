@@ -74,7 +74,7 @@ services:
       traefik.port: '5555'
 
   notebook:
-    image: apik/notebook-git:latest
+    image: apik/notebook-git:${strNotebookVersion}
     ports:
       - 8888:8888
     user: root
