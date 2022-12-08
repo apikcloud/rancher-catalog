@@ -77,9 +77,9 @@ services:
     image: apik/notebook-git:${strNotebookVersion}
     ports:
       - 8888:8888
-    # user: root
-    group_add:
-      - 999
+    user: root
+    # group_add:
+    #   - 999
     depends_on:
       - api
       - redis
@@ -89,10 +89,10 @@ services:
       - JUPYTER_ENABLE_LAB=yes
       - GIT_USERNAME=${strGitUsername}
       - GIT_EMAIL=${strGitEmail}
-      # - NB_GID=999
-      # - NB_IUD=1000
+      - NB_UID=1000
+      - NB_GID=999
     volumes:
-      - backend-app:/home/jovyan/app
+      - backend-app:/home/jovyan/work
     labels:
       io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
       traefik.frontend.rule: Host:backend-notebook.apik.cloud
