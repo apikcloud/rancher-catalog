@@ -6,6 +6,12 @@ catalog:
     description: "ApiX Backend API"
     minimum_rancher_version: v1.3.2
     questions:
+      - variable: strAppDir
+        label: "App Directory"
+        type: "string"
+        required: true
+        default: "/usr/src/app"
+
       - variable: strVersion
         label: "Backend version"
         description: "For eg. 1.0"
@@ -38,6 +44,12 @@ catalog:
         label: "Notebook Token"
         type: "string"
         required: true
+
+      - variable: strGitUrl
+        label: "Git: Url"
+        description: "https://..."
+        type: "string"
+        required: false
 
       - variable: strGitUsername
         label: "Git: Username"

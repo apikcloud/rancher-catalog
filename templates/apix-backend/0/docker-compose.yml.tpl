@@ -16,6 +16,8 @@ services:
       - RANCHER_ACCESS_KEY=${strRancherAccessKey}
       - RANCHER_URL=${strRancherUrl}
       - GOOGLE_DEFAULT_BUCKET=${strGoogleDefaultBucket}
+      - APP_DIR=${strAppDir}
+      - GIT_URL=${strGitUrl}
     volumes:
       - backend-app:/usr/src/app
       - backend-data-input:/usr/src/input
