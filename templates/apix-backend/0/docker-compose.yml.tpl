@@ -77,7 +77,7 @@ services:
     image: apik/notebook-git:${strNotebookVersion}
     ports:
       - 8888:8888
-    user: root
+    # user: root
     depends_on:
       - api
       - redis
@@ -87,8 +87,8 @@ services:
       - JUPYTER_ENABLE_LAB=yes
       - GIT_USERNAME=${strGitUsername}
       - GIT_EMAIL=${strGitEmail}
-      - NB_GID=999
-      - NB_IUD=1000
+      # - NB_GID=999
+      # - NB_IUD=1000
     volumes:
       - backend-app:/home/jovyan/app
     labels:

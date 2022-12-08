@@ -17,14 +17,14 @@ catalog:
         description: "For eg. 1.0"
         type: "string"
         required: true
-        default: "latest"
+        default: "0.2"
 
       - variable: strNotebookVersion
         label: "Notebook version"
         description: "For eg. 1.0"
         type: "string"
         required: true
-        default: "latest"
+        default: "0.2"
 
       - variable: strRancherSecretKey
         label: "Rancher Secret Key"
