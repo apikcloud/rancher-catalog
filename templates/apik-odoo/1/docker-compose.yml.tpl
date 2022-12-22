@@ -18,13 +18,9 @@ services:
         {{- end}}
         {{- if eq .Values.intWorkers "0"}}
             traefik.frontend.rule: Host:$strTraefikDomains
-        {{- if ne .Values.strTraefikRedirectRegex ""}}
             traefik.frontend.redirect.regex: $strTraefikRedirectRegex
-        {{- end}}
-        {{- if ne .Values.strTraefikRedirectReplacement ""}}
             traefik.frontend.redirect.replacement: $strTraefikRedirectReplacement
             traefik.frontend.redirect.permanent: true
-        }}
         {{- if gt .Values.intDomains "1"}}
             traefik.domain2.frontend.rule: Host:$strTraefikDomains2
         {{- end}}
@@ -40,18 +36,14 @@ services:
         {{- else}}
             traefik.odoo.port: 8069
             traefik.odoo.frontend.rule: Host:$strTraefikDomains
-        {{- if ne .Values.strTraefikRedirectReplacement ""}}
             traefik.odoo.frontend.redirect.regex: $strTraefikRedirectRegex
             traefik.odoo.frontend.redirect.replacement: $strTraefikRedirectReplacement
             traefik.odoo.frontend.redirect.permanent: true
-        {{- end}}
             traefik.longpolling.port: 8072
             traefik.longpolling.frontend.rule: Host:$strTraefikDomains;PathPrefix:/longpolling/
-        {{- if ne .Values.strTraefikRedirectReplacement ""}}
             traefik.longpolling.frontend.redirect.regex: $strTraefikRedirectRegex
             traefik.longpolling.frontend.redirect.replacement: $strTraefikRedirectReplacement
             traefik.longpolling.frontend.redirect.permanent: true
-        {{- end}}
         {{- if gt .Values.intDomains "1"}}
             traefik.odoo.domain2.frontend.rule: Host:$strTraefikDomains2
             traefik.longpolling.domain2.frontend.rule: Host:$strTraefikDomains2;PathPrefix:/longpolling/
