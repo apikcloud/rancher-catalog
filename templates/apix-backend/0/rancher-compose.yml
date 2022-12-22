@@ -1,0 +1,93 @@
+version: '2'
+
+catalog:
+    name: "ApiX Backend"
+    version: "1.0"
+    description: "ApiX Backend API"
+    minimum_rancher_version: v1.3.2
+    questions:
+      - variable: strAppDir
+        label: "App Directory"
+        type: "string"
+        required: true
+        default: "/usr/src/app"
+
+      - variable: strVersion
+        label: "Backend version"
+        description: "For eg. 1.0"
+        type: "string"
+        required: true
+        default: "0.4"
+
+      - variable: strNotebookVersion
+        label: "Notebook version"
+        description: "For eg. 1.0"
+        type: "string"
+        required: true
+        default: "0.5"
+
+      - variable: strRancherSecretKey
+        label: "Rancher Secret Key"
+        type: "string"
+        required: true
+
+      - variable: strRancherAccessKey
+        label: "Rancher Access Key"
+        type: "string"
+        required: true
+
+      - variable: strRancherUrl
+        label: "Rancher URL"
+        type: "string"
+        required: true
+
+      - variable: strNodeExecution
+        label: "Execution Node"
+        type: "string"
+        required: true
+        default: "backend_api=true"
+
+      - variable: strNotebookToken
+        label: "Notebook Token"
+        type: "string"
+        required: true
+
+      - variable: strGitUrl
+        label: "Git: Url"
+        description: "https://..."
+        type: "string"
+        required: false
+
+      - variable: strGitUsername
+        label: "Git: Username"
+        description: "For eg. John Doe"
+        type: "string"
+        required: false
+
+      - variable: strGitEmail
+        label: "Git: User email"
+        description: "For eg. johndoe@mail.com"
+        type: "string"
+        required: false
+
+      - variable: strGoogleDefaultBucket
+        label: "Google Storage - default bucket name"
+        type: "string"
+        required: true
+
+services:
+  redis:
+    scale: 1
+    start_on_create: true
+  api:
+    scale: 1
+    start_on_create: true
+  worker:
+    scale: 1
+    start_on_create: true
+  flower:
+    scale: 1
+    start_on_create: true
+  notebook:
+    scale: 1
+    start_on_create: false
