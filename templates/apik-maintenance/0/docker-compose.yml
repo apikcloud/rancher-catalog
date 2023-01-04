@@ -1,0 +1,19 @@
+version: "2"
+services:
+  maintenance-nginx:
+    image: nginx:latest
+    volumes:
+      - ./error-pages:/usr/share/nginx/error-pages
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    labels:
+      traefik.enable: true
+      traefik.http.routers.error-router.rule: Host:test-coic-03-01-1.apik.cloud
+      traefik.http.routers.error-router.priority: 1
+      traefik.http.routers.error-router.entrypoints: webinsecure
+      traefik.http.routers.error-router.middlewares: error-pages-middleware
+      traefik.http.middlewares.error-pages-middleware.errors.status: 400-599
+      traefik.http.middlewares.error-pages-middleware.errors.service: error-pages-service
+      traefik.http.middlewares.error-pages-middleware.errors.query: /{status}.html
+      traefik.http.services.error-pages-service.loadbalancer.server.port: 80
+      io.rancher.scheduler.affinity:host_label: maintenance=true
+  
