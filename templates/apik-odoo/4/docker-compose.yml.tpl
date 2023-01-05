@@ -7,10 +7,8 @@ services:
         labels:
             io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
             io.rancher.scheduler.affinity:host_label: ${host_label}
-            {{- range .Values.traefik }}
-            {{ . }}
-            {{- end }}
-
+            {{ .Values.traefik }}
+            
         volumes:
             - $strOdooFilestoreVolumeName:$strOdooDataFilestore
         {{- if eq .Values.enumSessionsStore "filestore" }}
