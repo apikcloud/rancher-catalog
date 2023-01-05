@@ -1,5 +1,4 @@
 version: '2'
-{{ $multiline := .Values.traefik }}
 services:
     odoo:
         tty: true
@@ -8,7 +7,7 @@ services:
         labels:
             io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
             io.rancher.scheduler.affinity:host_label: ${host_label}
-            {{ $multiline }}
+            ${traefik}
             
         volumes:
             - $strOdooFilestoreVolumeName:$strOdooDataFilestore
