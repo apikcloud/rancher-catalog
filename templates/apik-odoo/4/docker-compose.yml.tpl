@@ -5,6 +5,7 @@ services:
         tty: true
         stdin_open: true
         image: $strImageName:$strImageTag
+        mem_limit: ${intLimitMemoryHard}
         labels:
             io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
             io.rancher.scheduler.affinity:host_label: ${host_label}
