@@ -1,0 +1,24 @@
+version: '2'
+volumes:
+  grafana-app-data:
+    external: true
+    driver: rancher-nfs
+services:
+  grafana:
+    image: grafana/grafana:9.3.2
+    
+    volumes:
+    - gitlab-app-data:/var/opt/gitlab
+    - gitlab-log-data:/var/log/gitlab
+    - gitlab-conf-files:/etc/gitlab
+    ports:
+    - 3000:3000/tcp
+    labels:
+      io.rancher.container.hostname_override: container_name
+      traefik.enable: true
+      traefik.port: 80
+      traefik.backend.loadbalancer.stickiness: true
+      traefik.backend.loadbalancer.method: drr
+      traefik.backend.buffering.retryExpression: IsNetworkError() && Attempts() < 5
+      traefik.frontend.rule: Host:$strTraefikDomains
+      io.rancher.scheduler.affinity:host_label: ${host_label}

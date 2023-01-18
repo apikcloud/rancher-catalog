@@ -1,0 +1,23 @@
+version: '2'
+catalog:
+    name: "Gitlab"
+    version: "1.0"
+    description: "Gitlab by Apik"
+    minimum_rancher_version: v1.3.2
+
+    questions:
+        -   variable: strTraefikDomains
+            label: "Domaine Grafana"
+            required: true
+            type: "string"
+            default: "grafana.apik.cloud"        
+        -   variable: host_label
+            label: "Host with Label to put gitlab on"
+            description: |
+              Host label to use as postgres 'value' tag.
+              Example: 'grafana=true'
+            required: true
+            type: "string"
+            default: "grafana=true"
+            
+            
