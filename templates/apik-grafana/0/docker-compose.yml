@@ -8,9 +8,7 @@ services:
     image: grafana/grafana:9.3.2
     
     volumes:
-    - gitlab-app-data:/var/opt/gitlab
-    - gitlab-log-data:/var/log/gitlab
-    - gitlab-conf-files:/etc/gitlab
+    - grafana-app-data:/var/lib/grafana
     ports:
     - 3000:3000/tcp
     labels:
