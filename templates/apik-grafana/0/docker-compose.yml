@@ -14,7 +14,7 @@ services:
     labels:
       io.rancher.container.hostname_override: container_name
       traefik.enable: true
-      traefik.port: 80
+      traefik.port: 3000
       traefik.backend.loadbalancer.stickiness: true
       traefik.backend.loadbalancer.method: drr
       traefik.backend.buffering.retryExpression: IsNetworkError() && Attempts() < 5
