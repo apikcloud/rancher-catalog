@@ -1,7 +1,6 @@
 version: '2'
 volumes:
   grafana-app-data:
-    external: true
     driver: rancher-nfs
 services:
   grafana:
