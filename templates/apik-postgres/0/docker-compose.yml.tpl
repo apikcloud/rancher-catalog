@@ -4,7 +4,8 @@ services:
   postgres:
     image: postgres:$strVersion
     labels:
-      io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
+      io.rancher.scheduler.affinity:host_label_soft: ${host_label}
+      io.rancher.scheduler.affinity:host_label_ne: ${dedie_label}
     volumes:
       - data:${strOdooDataPostgres}
     environment:

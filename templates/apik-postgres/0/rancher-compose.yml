@@ -34,11 +34,17 @@ catalog:
         type: "string"
         required: true
       
-      - variable: strNodeExecution
+      - variable: host_label
         label: "Node d'exécution"
         type: "string"
         required: true
         default: "pg_rancher=true"
+        
+      - variable: dedie_label
+        label: "Si le serveur est dédié"
+        type: "string"
+        required: true
+        default: "dedie=true"
       
 
 services:
