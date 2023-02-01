@@ -309,7 +309,13 @@ catalog:
       required: true
       default: "odoo=true"
       type: "string"
-
+      
+    - variable: "dedie_label"
+      description: "Host is a dedie"
+      label: "Host label:"
+      required: true
+      default: "dedie=true"
+      type: "string"
     # Custom Environment Variables
 
     - variable: multiEnvVariables
