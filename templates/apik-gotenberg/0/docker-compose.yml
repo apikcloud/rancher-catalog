@@ -4,11 +4,7 @@ services:
   gitlab-server:
     image: gotenberg/gotenberg:7
     labels:
-      io.rancher.container.hostname_override: container_name
       traefik.enable: true
       traefik.port: 3000
-      traefik.backend.loadbalancer.stickiness: true
-      traefik.backend.loadbalancer.method: drr
-      traefik.backend.buffering.retryExpression: IsNetworkError() && Attempts() < 5
       traefik.frontend.rule: Host:gotenberg.apik.cloud
       io.rancher.scheduler.affinity:host_label_ne: dedie=true
