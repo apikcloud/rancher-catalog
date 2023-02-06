@@ -2,7 +2,7 @@ version: '2'
 
 services:
   gitlab-server:
-    image: gotenberg/gotenberg:7
+    image: gotenberg/gotenberg:6
     command:
       - "gotenberg"
       - "--log-level=debug"
