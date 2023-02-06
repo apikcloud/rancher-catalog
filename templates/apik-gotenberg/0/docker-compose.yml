@@ -3,10 +3,11 @@ version: '2'
 services:
   gitlab-server:
     image: thecodingmachine/gotenberg:6
-    command:
-      - "gotenberg"
-      - "--log-level=debug"
-      - "--api-timeout=9999999s"
+    environment:
+      # Database parameters
+      DEFAULT_WAIT_TIMEOUT: 999999
+      MAXIMUM_WAIT_TIMEOUT: 999999
+      MAXIMUM_WAIT_DELAY: 999999
     labels:
       traefik.enable: true
       traefik.port: 3000
