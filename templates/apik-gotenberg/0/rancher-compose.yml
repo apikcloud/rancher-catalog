@@ -1,0 +1,10 @@
+version: '2'
+catalog:
+    name: "Gotenberg"
+    version: "1.0"
+    description: "Gotenberg by Apik"
+    minimum_rancher_version: v1.3.2
+
+
+            
+            
