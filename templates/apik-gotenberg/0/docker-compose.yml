@@ -4,7 +4,8 @@ services:
   gitlab-server:
     image: gotenberg/gotenberg:7
     command:
-      - --api-timeout
+      - "gotenberg"
+      - "--api-timeout=9999999"
     labels:
       traefik.enable: true
       traefik.port: 3000
