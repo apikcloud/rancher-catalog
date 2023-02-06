@@ -5,7 +5,7 @@ services:
     image: gotenberg/gotenberg:7
     command:
       - "gotenberg"
-      - "--api-timeout=9999999s"
+      - "--api-timeout=9999999s --log-level debug"
     labels:
       traefik.enable: true
       traefik.port: 3000
