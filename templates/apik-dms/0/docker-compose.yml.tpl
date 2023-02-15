@@ -14,7 +14,7 @@ services:
       POSTGRES_DB: ${PgDB}
       POSTGRES_PASSWORD: ${PgPASSWORD}
     volumes:
-      - datapg:/var/lib/postgresql/data/pgdata
+      - datapg:/var/lib/postgresql/data
     labels:
       io.rancher.scheduler.affinity:host_label: ${labelDMS}=true
       
