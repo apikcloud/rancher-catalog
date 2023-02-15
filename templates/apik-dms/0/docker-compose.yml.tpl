@@ -16,14 +16,14 @@ services:
     volumes:
       - datapg:/var/lib/postgresql/data/pgdata
     labels:
-      io.rancher.scheduler.affinity:host_label_ne: ${labelDMS}=true
+      io.rancher.scheduler.affinity:host_label: ${labelDMS}=true
       
   redis:
     image: redis:7.0.5-alpine
     ports:
       - '6379'
     labels:
-      io.rancher.scheduler.affinity:host_label_ne: ${labelDMS}=true
+      io.rancher.scheduler.affinity:host_label: ${labelDMS}=true
     command:
       - redis-server
       - --databases
@@ -46,7 +46,7 @@ services:
       traefik.enable: true
       traefik.port: 8000
       traefik.frontend.rule: Host:${HostDMS}
-      io.rancher.scheduler.affinity:host_label_ne: ${labelDMS}=true
+      io.rancher.scheduler.affinity:host_label: ${labelDMS}=true
     depends_on:
       - redis
       - postgres
