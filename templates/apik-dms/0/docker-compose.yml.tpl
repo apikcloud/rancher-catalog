@@ -35,11 +35,11 @@ services:
       
   mayan-dms:
     environment:
-      MAYAN_CELERY_BROKER_URL: "redis"
-      MAYAN_CELERY_RESULT_BACKEND: "redis" 
+      MAYAN_CELERY_BROKER_URL: "redis:6379"
+      MAYAN_CELERY_RESULT_BACKEND: "redis:6379" 
       MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':${mayanuserpass},'USER':'mayan','HOST':'postgres'}}"
       MAYAN_LOCK_MANAGER_BACKEND: "mayan.apps.lock_manager.backends.redis_lock.RedisLock"
-      MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS: "{'redis_url':'redis'}"
+      MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS: "{'redis_url':'redis:6379'}"
     volumes:
       - datamayan:/var/lib/mayan
     labels:
