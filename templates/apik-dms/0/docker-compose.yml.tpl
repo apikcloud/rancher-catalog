@@ -6,7 +6,7 @@ volumes:
     
 services:
   mayan-dms:
-    image: mayanedms/mayanedms:4.3
+    image: "mayanedms/mayanedms:4.3"
     environment:
       MAYAN_CELERY_BROKER_URL: "redis"
       MAYAN_CELERY_RESULT_BACKEND: "redis" 
