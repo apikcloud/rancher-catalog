@@ -9,31 +9,38 @@ catalog:
         label: "Password Redis"
         type: "string"
         required: true
+        default: "321564"
       - variable: mayanuserpass
         label: "Password Mayan"
         type: "string"
         required: true
+        default: "321654"
       - variable: HostDMS
         label: "Host DMS"
         description: "Par exemple dms.apik.cloud"
         type: "string"
         required: true
+        default: "dms.apik.cloud"
       - variable: labelDMS
         label: "Label DMS sur Rancher"
         description: "Par exemple dms1=true"
         type: "string"
         required: true
+        default: "demo=true"
       - variable: PgUSER
         label: "User postgres"
         type: "string"
         required: true
+        default: "user"
       - variable: PgDB
         label: "DB postgres"
         type: "string"
         required: true
+        default: "mayan"
       - variable: PgPASSWORD
         label: "Password postgres"
         type: "string"
         required: true
+        default: "321564"
             
             
