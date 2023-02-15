@@ -34,7 +34,8 @@ services:
       - ""
       
   mayan-dms:
-    
+    volumes:
+      - datamayan: /var/lib/mayan
     labels:
       traefik.enable: true
       traefik.port: 8000
