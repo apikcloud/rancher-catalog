@@ -1,0 +1,39 @@
+version: '2'
+catalog:
+    name: "DMS"
+    version: "4.3"
+    description: "DMS by Apik"
+    minimum_rancher_version: v1.3.2
+    questions:
+      - variable: mayanredispassword
+        label: "Password Redis"
+        type: "string"
+        required: true
+      - variable: mayanuserpass
+        label: "Password Mayan"
+        type: "string"
+        required: true
+      - variable: HostDMS
+        label: "Host DMS"
+        description: "Par exemple dms.apik.cloud"
+        type: "string"
+        required: true
+      - variable: labelDMS
+        label: "Label DMS sur Rancher"
+        description: "Par exemple dms1=true"
+        type: "string"
+        required: true
+      - variable: PgUSER
+        label: "User postgres"
+        type: "string"
+        required: true
+      - variable: PgDB
+        label: "DB postgres"
+        type: "string"
+        required: true
+      - variable: PgPASSWORD
+        label: "Password postgres"
+        type: "string"
+        required: true
+            
+            
