@@ -8,11 +8,11 @@ services:
   mayan-dms:
     image: mayanedms/mayanedms:s4.3
     environment:
-      MAYAN_CELERY_BROKER_URL: redis://:${mayanredispassword}@redis:6379/0
-      MAYAN_CELERY_RESULT_BACKEND: redis://:${mayanredispassword}@redis:6379/1
+      MAYAN_CELERY_BROKER_URL: redis://:${mayanredispassword}@redis:6379
+      MAYAN_CELERY_RESULT_BACKEND: redis://:${mayanredispassword}@redis:6379
       MAYAN_DATABASES: {'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':${mayanuserpass},'USER':'mayan','HOST':'postgres'}}
       MAYAN_LOCK_MANAGER_BACKEND: mayan.apps.lock_manager.backends.redis_lock.RedisLock
-      MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS: {'redis_url':'redis://:${mayanredispassword}@redis:6379/2'}
+      MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS: {'redis_url':'redis://:${mayanredispassword}@redis:6379'}
     volumes:
       - datamayan: /var/lib/mayan
     labels:
