@@ -2,7 +2,11 @@ version: '2'
 
 volumes:
   datamayan:
+    external: true
+    driver: local
   datapg:
+    external: true
+    driver: local
     
 services:
   
