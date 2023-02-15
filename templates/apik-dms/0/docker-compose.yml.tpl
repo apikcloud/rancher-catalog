@@ -2,9 +2,7 @@ version: '2'
 
 volumes:
   datamayan:
-    driver: local
   datapg:
-    driver: local
     
 services:
   
