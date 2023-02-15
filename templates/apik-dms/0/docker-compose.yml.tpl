@@ -34,4 +34,13 @@ services:
       - ""
       
   mayan-dms:
-    image: mayanedms/mayanedms:4.3
+    
+    labels:
+      traefik.enable: true
+      traefik.port: 8000
+      traefik.frontend.rule: Host:${HostDMS}
+      io.rancher.scheduler.affinity:host_label_ne: ${labelDMS}=true
+    depends_on:
+      - redis
+      - postgres
+    image: mayanedms/mayanedms:s4.3
