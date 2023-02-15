@@ -6,13 +6,13 @@ volumes:
     
 services:
   mayan-dms:
-    image: mayanedms/mayanedms:s4.3
+    image: mayanedms/mayanedms:4.3
     environment:
-      - MAYAN_CELERY_BROKER_URL: "redis"
-      - MAYAN_CELERY_RESULT_BACKEND: "redis" 
-      - MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':${mayanuserpass},'USER':'mayan','HOST':'postgres'}}"
-      - MAYAN_LOCK_MANAGER_BACKEND: "mayan.apps.lock_manager.backends.redis_lock.RedisLock"
-      - MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS: "{'redis_url':'redis'}"
+      MAYAN_CELERY_BROKER_URL: "redis"
+      MAYAN_CELERY_RESULT_BACKEND: "redis" 
+      MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':${mayanuserpass},'USER':'mayan','HOST':'postgres'}}"
+      MAYAN_LOCK_MANAGER_BACKEND: "mayan.apps.lock_manager.backends.redis_lock.RedisLock"
+      MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS: "{'redis_url':'redis'}"
     volumes:
       - datamayan: /var/lib/mayan
     labels:
@@ -27,9 +27,9 @@ services:
   postgres:
     image: postgres:13.8-alpine
     environment:
-      - POSTGRES_USER: ${PgUSER}
-      - POSTGRES_DB: ${PgDB}
-      - POSTGRES_PASSWORD: ${PgPASSWORD}
+      POSTGRES_USER: ${PgUSER}
+      POSTGRES_DB: ${PgDB}
+      POSTGRES_PASSWORD: ${PgPASSWORD}
     volumes:
       - datapg:/var/lib/postgresql/data/pgdata
     labels:
