@@ -37,7 +37,7 @@ services:
     environment:
       MAYAN_CELERY_BROKER_URL: "redis://:@redis:6379/0"
       MAYAN_CELERY_RESULT_BACKEND: "redis://:@redis:6379/1" 
-      MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':${mayanuserpass},'USER':'mayan','HOST':'postgres'}}"
+      MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':${PgDB},'PASSWORD':${PgPASSWORD},'USER':${PgUSER},'HOST':'postgres'}}"
       MAYAN_LOCK_MANAGER_BACKEND: "mayan.apps.lock_manager.backends.redis_lock.RedisLock"
       MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS: "{'redis_url':'redis://:@redis:6379/1'}"
     volumes:
