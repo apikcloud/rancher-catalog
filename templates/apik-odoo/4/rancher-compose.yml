@@ -328,10 +328,12 @@ services:
   odoo:
     health_check:
       port: 8069
-      interval: 2000
+      interval: 6000
       unhealthy_threshold: 3
       strategy: recreate
       healthy_threshold: 2
-      response_timeout: 2000
+      response_timeout: 6000
+      initializing_timeout: 60000
+      reinitializing_timeout: 60000
     upgrade_strategy:
       start_first: true
