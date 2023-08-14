@@ -133,7 +133,7 @@ catalog:
       label: "Odoo Max Connections"
       type: "int"
       required: true
-      default: "100"
+      default: "32"
 
     - variable: strDbFilter
       label: "Odoo DB Filter"
@@ -188,21 +188,21 @@ catalog:
       description: "Maximum allowed CPU time per request"
       type: "int"
       required: true
-      default: "400"
+      default: "60"
 
     - variable: intLimiteTimeReal
       label: "Limit Time Real"
       description: "Maximum allowed Real time per request"
       type: "int"
       required: true
-      default: "800"
+      default: "120"
 
     - variable: intLimiteTimeRealCron
       label: "Limit Time Real (only v11+)"
       description: "Maximum allowed Real time per cron job. (default: --limit-time-real). Set to 0 for no limit."
       type: "int"
       required: true
-      default: "1600"
+      default: "120"
 
     - variable: intLimitRequest
       label: "LIMIT_REQUEST"
@@ -360,10 +360,12 @@ services:
   odoo:
     health_check:
       port: 8069
-      interval: 60000
+      interval: 2000
+      initializing_timeout: 60000
+      reinitializing_timeout: 60000
       unhealthy_threshold: 3
       strategy: recreate
       healthy_threshold: 2
-      response_timeout: 60000
+      response_timeout: 2000
     upgrade_strategy:
       start_first: true

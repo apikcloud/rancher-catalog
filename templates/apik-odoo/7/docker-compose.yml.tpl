@@ -60,7 +60,7 @@ services:
             FIXDBS: ${strFixDbs}
             FIX_DB_WEB_DISABLED: True
             # Dynamic Entrypoint
-            REPOS_YAML: ${multiReposYaml}
+            CUSTOM_REPOSITORIES: ${multiReposYaml}
             CUSTOM_CONFIG: ${multiOdooConf}
             CUSTOM_REQUIREMENTS: ${multiCustomRequirements}
             # SMTP Config
