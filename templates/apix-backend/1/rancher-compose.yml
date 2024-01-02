@@ -101,6 +101,12 @@ catalog:
         required: true
         default: "backend_api=true"
 
+      - variable: strFilestoreVolumeName
+        label: "Filestore Volume Name"
+        required: true
+        default: "odoo_data_filestore"
+        type: "string"
+
 services:
   redis:
     scale: 1

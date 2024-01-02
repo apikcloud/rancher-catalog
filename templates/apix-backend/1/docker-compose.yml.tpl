@@ -34,7 +34,7 @@ services:
     volumes:
       - backend-input:/usr/src/input
       - backend-output:/usr/src/output
-      - backend-filestore:/usr/src/filestore:rw
+      - $strFilestoreVolumeName:/usr/src/filestore
       - backend-conf:/usr/src/conf
     depends_on:
       - redis
@@ -73,7 +73,7 @@ services:
     volumes:
       - backend-input:/usr/src/input
       - backend-output:/usr/src/output
-      - backend-filestore:/usr/src/filestore:rw
+      - $strFilestoreVolumeName:/usr/src/filestore
       - backend-conf:/usr/src/conf
     depends_on:
       - api
@@ -154,6 +154,14 @@ services:
 
 volumes:
   backend-input:
+    driver: rancher-nfs
+    external: true
   backend-output:
-  backend-filestore:
+    driver: rancher-nfs
+    external: true
   backend-conf:
+    driver: rancher-nfs
+    external: true
+  $strFilestoreVolumeName:
+    driver: rancher-nfs
+    external: true
