@@ -38,6 +38,16 @@ catalog:
         label: "Flower Auth"
         description: "For eg. admin:admin"
         type: "string"
+        required: false
+
+      - variable: strFlowerAuthUser
+        label: "Flower User"
+        type: "string"
+        required: true
+
+      - variable: strFlowerAuthPassword
+        label: "Flower password"
+        type: "string"
         required: true
 
       - variable: strRancherSecretKey

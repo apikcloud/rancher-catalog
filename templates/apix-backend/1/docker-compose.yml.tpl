@@ -123,6 +123,8 @@ services:
       - FILESTORE_PATH=/usr/src/filestore
       - DEPLOYMENTS_PATH=data/deployments
       - FLOWER_BASIC_AUTH=${strFlowerAuth}
+      - FLOWER_USER=${strFlowerAuthUser}
+      - FLOWER_PASSWORD=${strFlowerAuthPassword}
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
       - RANCHER_SECRET_KEY=${strRancherSecretKey}
