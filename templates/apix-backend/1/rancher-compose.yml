@@ -2,7 +2,7 @@ version: '2'
 
 catalog:
     name: "ApiX Backend"
-    version: "1.0"
+    version: "2.0"
     description: "ApiX Backend API"
     minimum_rancher_version: v1.3.2
     questions:
