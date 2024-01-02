@@ -144,7 +144,7 @@ services:
       - worker
     labels:
       io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
-      traefik.frontend.rule: Host:Host:${strFlowerUrl}
+      traefik.frontend.rule: Host:${strFlowerUrl}
       traefik.enable: 'true'
       traefik.backend.buffering.retryExpression: IsNetworkError() && Attempts() < 5
       traefik.backend.loadbalancer.method: drr
