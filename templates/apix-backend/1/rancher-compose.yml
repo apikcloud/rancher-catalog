@@ -1,0 +1,109 @@
+version: '2'
+
+catalog:
+    name: "ApiX Backend"
+    version: "1.0"
+    description: "ApiX Backend API"
+    minimum_rancher_version: v1.3.2
+    questions:
+      - variable: strApiUrl
+        label: "API Url"
+        type: "string"
+        required: true
+
+      - variable: strFlowerUrl
+        label: "Flower Url"
+        type: "string"
+        required: true
+
+      - variable: strApiKey
+        label: "API Key"
+        type: "string"
+        required: true
+
+      - variable: strAppDir
+        label: "App Directory"
+        type: "string"
+        required: true
+        default: "/app"
+
+      - variable: strVersion
+        label: "Backend version"
+        description: "For eg. 1.0"
+        type: "string"
+        required: true
+        default: "latest"
+
+      - variable: strFlowerAuth
+        label: "Flower Auth"
+        description: "For eg. admin:admin"
+        type: "string"
+        required: true
+
+      - variable: strRancherSecretKey
+        label: "Rancher Secret Key"
+        type: "string"
+        required: true
+
+      - variable: strRancherAccessKey
+        label: "Rancher Access Key"
+        type: "string"
+        required: true
+
+      - variable: strRancherUrl
+        label: "Rancher URL"
+        type: "string"
+        required: true
+
+      - variable: strRancherEnv
+        label: "Rancher Environment ID"
+        type: "string"
+        required: true
+
+      - variable: strPrometheusUrl
+        label: "Prometheus Url"
+        type: "string"
+        required: true
+
+      - variable: multiServices
+        label: Services
+        type: "multiline"
+        required: true
+
+      - variable: multiStorageProviders
+        label: Storage Providers
+        type: "multiline"
+        required: true
+
+      - variable: strDefaultStorageProvider
+        label: "Default Storage Provider"
+        type: "string"
+        required: true
+
+      - variable: multiPostgresqlServers
+        label: PostgreSQL Servers
+        type: "multiline"
+        required: true
+
+      - variable: strNodeExecution
+        label: "Execution Node"
+        type: "string"
+        required: true
+        default: "backend_api=true"
+
+services:
+  redis:
+    scale: 1
+    start_on_create: true
+  api:
+    scale: 1
+    start_on_create: true
+  worker:
+    scale: 1
+    start_on_create: true
+  flower:
+    scale: 1
+    start_on_create: true
+  beat:
+    scale: 1
+    start_on_create: true
