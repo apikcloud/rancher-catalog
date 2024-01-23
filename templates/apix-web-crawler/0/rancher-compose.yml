@@ -6,22 +6,29 @@ catalog:
     description: "ApiX Backend API"
     minimum_rancher_version: v1.3.2
     questions:
-      - variable: strApiUrl
-        label: "API Url"
+      - variable: strDomain
+        label: "Crawler Domain"
         type: "string"
         required: true
 
-      - variable: strFlowerAuth
-        label: "Flower Auth"
-        description: "For eg. admin:admin"
+      - variable: strMongoUser
+        label: "Mongo User"
+        description: "For eg. admin"
         type: "string"
-        required: false
+        required: true
+        default: "admin"
+
+      - variable: strMongoPassword
+        label: "Mongo Password"
+        description: "For eg. admin"
+        type: "string"
+        required: true
 
       - variable: strNodeExecution
         label: "Execution Node"
         type: "string"
         required: true
-        default: "backend_api=true"
+        default: "crawler=true"
 
 
 services:
