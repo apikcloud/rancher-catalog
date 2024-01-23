@@ -1,0 +1,40 @@
+version: '2'
+
+catalog:
+    name: "ApiX Web Crawler"
+    version: "1.0"
+    description: "ApiX Backend API"
+    minimum_rancher_version: v1.3.2
+    questions:
+      - variable: strApiUrl
+        label: "API Url"
+        type: "string"
+        required: true
+
+      - variable: strFlowerAuth
+        label: "Flower Auth"
+        description: "For eg. admin:admin"
+        type: "string"
+        required: false
+
+      - variable: strNodeExecution
+        label: "Execution Node"
+        type: "string"
+        required: true
+        default: "backend_api=true"
+
+
+services:
+  mongo:
+    scale: 1
+    start_on_create: true
+  master:
+    scale: 1
+    start_on_create: true
+  worker01:
+    scale: 1
+    start_on_create: true
+  worker02:
+    scale: 1
+    start_on_create: true
+

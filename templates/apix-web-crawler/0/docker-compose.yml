@@ -1,0 +1,95 @@
+version: '2'
+services:
+
+  mongo:
+    image: mongo:4.2
+    container_name: crawlab_mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "admin"
+      MONGO_INITDB_ROOT_PASSWORD: "0s9tVXOI8lo45F58r9yU"
+    # labels:
+    #   io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
+
+  master:
+    image: crawlabteam/crawlab:latest
+    container_name: crawlab_master
+    environment:
+      CRAWLAB_NODE_MASTER: "Y"
+      CRAWLAB_MONGO_HOST: "mongo"
+      CRAWLAB_MONGO_PORT: "27017"
+      CRAWLAB_MONGO_DB: "crawlab"
+      CRAWLAB_MONGO_USERNAME: "admin"
+      CRAWLAB_MONGO_PASSWORD: "0s9tVXOI8lo45F58r9yU"
+      CRAWLAB_MONGO_AUTHSOURCE: "admin"
+    volumes:
+      - "crawler-metadata:/root/.crawlab"
+      - "crawler-data:/data"
+      - "crawler-log:/var/logs/crawlab"
+    ports:
+      - "8080:8080"
+      - "9666:9666"
+    depends_on:
+      - mongo
+    # labels:
+    #   io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
+    #   traefik.enable: 'true'
+    #   traefik.port: '8080'
+    #   traefik.frontend.rule: Host:${strApiUrl}
+    #   traefik.backend.buffering.retryExpression: IsNetworkError() && Attempts() < 5
+    #   traefik.backend.loadbalancer.method: drr
+    #   traefik.backend.loadbalancer.stickiness: 'true'
+
+  worker01:
+    image: crawlabteam/crawlab:latest
+    container_name: crawlab_worker01
+    environment:
+      CRAWLAB_NODE_MASTER: "N"
+      CRAWLAB_GRPC_ADDRESS: "master:9666"
+      CRAWLAB_FS_FILER_URL: "http://master:8080/api/filer"
+    volumes:
+      - crawler-worker-01:/root/.crawlab
+    depends_on:
+      - master
+    # labels:
+    #   io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
+
+  worker02:
+    image: crawlabteam/crawlab:latest
+    container_name: crawlab_worker02
+    environment:
+      CRAWLAB_NODE_MASTER: "N"
+      CRAWLAB_GRPC_ADDRESS: "master:9666"
+      CRAWLAB_FS_FILER_URL: "http://master:8080/api/filer"
+    volumes:
+      - crawler-worker-02:/root/.crawlab
+    depends_on:
+      - master
+    # labels:
+    #   io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
+
+# volumes:
+#   crawler-metadata:
+#     driver: rancher-nfs
+#     external: true
+#   crawler-log:
+#     driver: rancher-nfs
+#     external: true
+#   crawler-data:
+#     driver: rancher-nfs
+#     external: true
+#   crawler-worker-01:
+#     driver: rancher-nfs
+#     external: true
+#   crawler-worker-02:
+#     driver: rancher-nfs
+#     external: true
+
+volumes:
+  crawler-metadata:
+  crawler-log:
+  crawler-data:
+  crawler-worker-01:
+  crawler-worker-02:
