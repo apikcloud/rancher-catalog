@@ -7,6 +7,8 @@ services:
     restart: always
     ports:
       - "27017:27017"
+    volumes:
+      - "crawler-db:/data/db"
     environment:
       MONGO_INITDB_ROOT_USERNAME: "admin"
       MONGO_INITDB_ROOT_PASSWORD: "0s9tVXOI8lo45F58r9yU"
@@ -71,6 +73,9 @@ services:
       io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
 
 volumes:
+  crawler-db:
+    driver: rancher-nfs
+    external: true
   crawler-metadata:
     driver: rancher-nfs
     external: true
