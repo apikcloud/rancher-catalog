@@ -10,8 +10,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: "admin"
       MONGO_INITDB_ROOT_PASSWORD: "0s9tVXOI8lo45F58r9yU"
-    # labels:
-    #   io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
+    labels:
+      io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
 
   master:
     image: crawlabteam/crawlab:latest
@@ -33,14 +33,14 @@ services:
       - "9666:9666"
     depends_on:
       - mongo
-    # labels:
-    #   io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
-    #   traefik.enable: 'true'
-    #   traefik.port: '8080'
-    #   traefik.frontend.rule: Host:${strApiUrl}
-    #   traefik.backend.buffering.retryExpression: IsNetworkError() && Attempts() < 5
-    #   traefik.backend.loadbalancer.method: drr
-    #   traefik.backend.loadbalancer.stickiness: 'true'
+    labels:
+      io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
+      traefik.enable: 'true'
+      traefik.port: '8080'
+      traefik.frontend.rule: Host:${strApiUrl}
+      traefik.backend.buffering.retryExpression: IsNetworkError() && Attempts() < 5
+      traefik.backend.loadbalancer.method: drr
+      traefik.backend.loadbalancer.stickiness: 'true'
 
   worker01:
     image: crawlabteam/crawlab:latest
@@ -53,8 +53,8 @@ services:
       - crawler-worker-01:/root/.crawlab
     depends_on:
       - master
-    # labels:
-    #   io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
+    labels:
+      io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
 
   worker02:
     image: crawlabteam/crawlab:latest
@@ -67,29 +67,23 @@ services:
       - crawler-worker-02:/root/.crawlab
     depends_on:
       - master
-    # labels:
-    #   io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
-
-# volumes:
-#   crawler-metadata:
-#     driver: rancher-nfs
-#     external: true
-#   crawler-log:
-#     driver: rancher-nfs
-#     external: true
-#   crawler-data:
-#     driver: rancher-nfs
-#     external: true
-#   crawler-worker-01:
-#     driver: rancher-nfs
-#     external: true
-#   crawler-worker-02:
-#     driver: rancher-nfs
-#     external: true
+    labels:
+      io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
 
 volumes:
   crawler-metadata:
+    driver: rancher-nfs
+    external: true
   crawler-log:
+    driver: rancher-nfs
+    external: true
   crawler-data:
+    driver: rancher-nfs
+    external: true
   crawler-worker-01:
+    driver: rancher-nfs
+    external: true
   crawler-worker-02:
+    driver: rancher-nfs
+    external: true
+
