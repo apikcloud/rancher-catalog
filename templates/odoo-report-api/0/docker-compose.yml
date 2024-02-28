@@ -9,11 +9,11 @@ services:
       - WORKERS=${intWorkers}
       - API_KEY=${strApiKey}
     ports:
-      - 8000:8000
+      - 8001:8000
     labels:
       io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
       traefik.enable: 'true'
-      traefik.port: '8000'
+      traefik.port: '8001'
       traefik.frontend.rule: Host:${strApiUrl}
       traefik.backend.buffering.retryExpression: IsNetworkError() && Attempts() < 5
       traefik.backend.loadbalancer.method: drr
