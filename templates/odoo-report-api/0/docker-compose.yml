@@ -1,0 +1,20 @@
+version: '2'
+services:
+  api:
+    image: apik/odoo-report-api:${strVersion}
+    command: /start
+    environment:
+      - LOG_LEVEL=${strLogLevel}
+      - MODE=${strMode}
+      - WORKERS=${intWorkers}
+      - API_KEY=${strApiKey}
+    ports:
+      - 8000:8000
+    labels:
+      io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
+      traefik.enable: 'true'
+      traefik.port: '8000'
+      traefik.frontend.rule: Host:${strApiUrl}
+      traefik.backend.buffering.retryExpression: IsNetworkError() && Attempts() < 5
+      traefik.backend.loadbalancer.method: drr
+      traefik.backend.loadbalancer.stickiness: 'true'

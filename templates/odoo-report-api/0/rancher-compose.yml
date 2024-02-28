@@ -1,0 +1,49 @@
+version: '2'
+
+catalog:
+    name: "Odoo Report API"
+    version: "1.0"
+    description: "Odoo Report API"
+    minimum_rancher_version: v1.3.2
+    questions:
+      - variable: intWorkers
+        label: "Workers"
+        type: "int"
+        required: true
+        default: 4
+
+      - variable: strLogLevel
+        label: "Log level"
+        type: "string"
+        required: true
+        default: DEBUG
+
+      - variable: strMode
+        label: "Mode"
+        type: "string"
+        required: true
+        default: dev
+
+      - variable: strApiKey
+        label: "API Key"
+        type: "string"
+        required: true
+
+      - variable: strVersion
+        label: "Backend version"
+        description: "For eg. 1.0"
+        type: "string"
+        required: true
+        default: "latest"
+
+      - variable: strNodeExecution
+        label: "Execution Node"
+        type: "string"
+        required: true
+        default: "backend_api=true"
+
+
+services:
+  api:
+    scale: 1
+    start_on_create: true
