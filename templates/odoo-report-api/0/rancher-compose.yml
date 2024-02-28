@@ -6,6 +6,11 @@ catalog:
     description: "Odoo Report API"
     minimum_rancher_version: v1.3.2
     questions:
+      - variable: strApiUrl
+        label: "API Url"
+        type: "string"
+        required: true
+
       - variable: intWorkers
         label: "Workers"
         type: "int"
