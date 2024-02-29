@@ -5,15 +5,18 @@ services:
     command: /start
     environment:
       - LOG_LEVEL=${strLogLevel}
-      - MODE=${strMode}
+      - MODE=${enumMode}
       - WORKERS=${intWorkers}
       - API_KEY=${strApiKey}
-    ports:
-      - 8001:8000
+      - AUTO_CLEAN=${boolAutoClean}
+      - REPORT_RESET_MARGIN=${boolResetMargin}
+      - REPORT_DEBUG=${boolReportDebug}
+      - REPORT_DEFAULT_NAME=${strReportDefaultName}
+      - WKHTMLTOPDF_QT=${boolWkhtmltopdfQt}
     labels:
       io.rancher.scheduler.affinity:host_label: ${strNodeExecution}
       traefik.enable: 'true'
-      traefik.port: '8001'
+      traefik.port: '8000'
       traefik.frontend.rule: Host:${strApiUrl}
       traefik.backend.buffering.retryExpression: IsNetworkError() && Attempts() < 5
       traefik.backend.loadbalancer.method: drr

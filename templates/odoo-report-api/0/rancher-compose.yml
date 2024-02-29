@@ -6,8 +6,65 @@ catalog:
     description: "Odoo Report API"
     minimum_rancher_version: v1.3.2
     questions:
+      - variable: strVersion
+        label: "Backend version"
+        description: "For eg. 1.0"
+        type: "string"
+        required: true
+        default: "latest"
+
       - variable: strApiUrl
         label: "API Url"
+        type: "string"
+        required: true
+
+      - variable: strLogLevel
+        label: "Log level"
+        type: "string"
+        required: true
+        default: DEBUG
+
+      - variable: "enumMode"
+        label: "Mode"
+        type: enum
+        required: true
+        options:
+          - production
+          - dev
+        default: production
+
+      - variable: boolResetMargin
+        label: "Reset margins"
+        type: "boolean"
+        required: true
+        default: false
+
+      - variable: boolReportDebug
+        label: "Debug mode for report"
+        type: "boolean"
+        required: true
+        default: false
+
+      - variable: boolWkhtmltopdfQt
+        label: "Wkhtmltopdf QT (patched version)"
+        type: "boolean"
+        required: true
+        default: false
+
+      - variable: boolAutoClean
+        label: "Auto clean reports after generated"
+        type: "boolean"
+        required: true
+        default: true
+
+      - variable: strReportDefaultName
+        label: "Report default name"
+        type: "string"
+        required: true
+        default: "report.pdf"
+
+      - variable: strApiKey
+        label: "API Key"
         type: "string"
         required: true
 
@@ -17,36 +74,11 @@ catalog:
         required: true
         default: 4
 
-      - variable: strLogLevel
-        label: "Log level"
-        type: "string"
-        required: true
-        default: DEBUG
-
-      - variable: strMode
-        label: "Mode"
-        type: "string"
-        required: true
-        default: dev
-
-      - variable: strApiKey
-        label: "API Key"
-        type: "string"
-        required: true
-
-      - variable: strVersion
-        label: "Backend version"
-        description: "For eg. 1.0"
-        type: "string"
-        required: true
-        default: "latest"
-
       - variable: strNodeExecution
         label: "Execution Node"
         type: "string"
         required: true
         default: "backend_api=true"
-
 
 services:
   api:
